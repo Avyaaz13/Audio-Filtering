@@ -65,7 +65,7 @@ columns=fullflexible
 \bibliographystyle{IEEEtran}
 \vspace{3cm}
 \title{Audio Filtering}
-\author{EE23BTECH11013 - Chedurtipati Avyaaz$^{*}$% <-this % stops a space
+\author{EE23BTECH11013 - Chedurtipati Avyaaz
 }
 \maketitle
 \newpage
@@ -74,6 +74,9 @@ columns=fullflexible
 \renewcommand{\thetable}{\arabic{figure}}
 
 \bibliographystyle{IEEEtran}
+
+\tableofcontents
+
 \begin{enumerate}[label=\thesection.\arabic*
 ,ref=\thesection.\theenumi]
 \section{Digital Filter}
@@ -90,12 +93,7 @@ Below is the Python Code to perform the Audio Filtering:
 \item 
 \label{Visualization}
 
-The audio file is analyzed using spectrogram using the online platform \href{https://academo.org/demos/spectrum-analyzer}{\url{https://academo.org/demos/spectrum-analyzer}}.\\
-
-The orange and yellow areas represent frequencies that have high intensities in the sound.
-Also, the signal is blank for frequencies above
-5.1 kHz.
-
+The audio file is analyzed using spectrogram using the online platform \label{prob:spectrogram}\href{https://academo.org/demos/spectrum-analyzer}{\url{https://academo.org/demos/spectrum-analyzer}}.
 
 \begin{figure}[!ht]
     \includegraphics[width=\columnwidth]{figs/Input_audio_signal.jpg}
@@ -107,7 +105,14 @@ Also, the signal is blank for frequencies above
     \caption{Spectrogram of Filtered Input Audio}
     \label{fig:output_audio}
 \end{figure}
-
+\item
+The output of the python script in Problem \ref{py:audio_filter} is the audio file ReducedNoise\_s181.wav. Play the file in the spectrogram in Problem \ref{prob:spectrogram}. What do you observe?
+\\
+\textbf{Solution:}The orange and yellow areas represent frequencies that have high intensities in the sound.
+The key strokes as well as
+background noise is subdued in the audio.
+Also, the signal is blank for frequencies above
+5.1 kHz.
 \end{enumerate}
 
  \section{Difference Equation}
@@ -123,11 +128,11 @@ y(n) + \frac{1}{2}y(n-1) = x(n) + x(n-2),
 \\
 y(n) = 0, n < 0 \label{q:2.2}
 \end{multline}
-Sketch $y(n)$.\\
+Sketch $y(n)$.
 Solve\\
 \solution  The C code calculates $y\brak{n}$ and Python plots the graph.
 \begin{lstlisting}
-https://github.cm/Avyaaz13/Audio-Filtering/blob/main/Audio%20Filtering/codes/xnyn.c
+https://github.com/Avyaaz13/Audio-Filtering/blob/main/Audio%20Filtering/codes/xnyn.c
 \end{lstlisting} 
 Below are the plots of the $x(n)$ and $y(n)$:
 \begin{lstlisting}
@@ -213,7 +218,7 @@ is
 \begin{equation}
 U(z) = \frac{1}{1-z^{-1}}, \quad \abs{z} > 1
 \end{equation}
-\solution It is easy to show that
+\solution
 \begin{equation}
 \delta(n) \system{Z} 1
 \end{equation}
@@ -248,19 +253,31 @@ known as the {\em Discrete Time Fourier Transform} (DTFT) of $x(n)$.
 \begin{lstlisting}
 https://github.com/Avyaaz13/Audio-Filtering/blob/main/Audio%20Filtering/codes/H.py
 \end{lstlisting}
+
+
+The DTFT of a sequence \( x(n) \) is given by:
+\[ H(e^{j\omega}) = \sum_{n=-\infty}^{\infty} x(n) e^{-j\omega n} \]
+
+Now, consider \( H(e^{j(\omega + 2\pi)}) \):
+\[ H(e^{j(\omega + 2\pi)}) = \sum_{n=-\infty}^{\infty} x(n) e^{-j(\omega + 2\pi) n} \]
+
+Using Euler's formula,
+\begin{align}
+e^{-j(\omega + 2\pi) n} &= e^{-j\omega n} e^{-j2\pi n} = e^{-j\omega n} \\
+\because  e^{-j2\pi n} &= 1\quad  \forall{n}
+\end{align}
+\begin{align}
+  H(e^{j(\omega + 2\pi)}) = H(e^{j\omega}) 
+\end{align}
+
+Therefore, the fundamental period is $2\pi$ , which implies that DTFT of a signal is always periodic.
+
 Substituting $z = e^{j \omega}$ in \eqref{eq:freq_resp}, we get
 \begin{align}
 	\left|H\brak{e^{j\omega}}\right| &= \left|\frac{1 + e^{-2j\omega}}{1 + \frac{1}{2}e^{-j\omega}}\right| \\
-									  &= \sqrt{\frac{\brak{1 + \cos{2\omega}}^2 + \brak{\sin{2\omega}}^2}{\brak{1 + \frac{1}{2}\cos{\omega}}^2 + \brak{\frac{1}{2}\sin{\omega}}^2}}\\
-									  &= \frac{4|\cos{\omega}|}{\sqrt{5 + 4\cos{\omega}}}
+	 &= \sqrt{\frac{\brak{1 + \cos{2\omega}}^2 + \brak{\sin{2\omega}}^2}{\brak{1 + \frac{1}{2}\cos{\omega}}^2 + \brak{\frac{1}{2}\sin{\omega}}^2}}\\
+	 &= \frac{4|\cos{\omega}|}{\sqrt{5 + 4\cos{\omega}}}
 \end{align}
-\begin{align}
-	\left|H\brak{e^{j\brak{\omega + 2\pi}}}\right| &= \frac{4|\cos\brak{\omega + 2\pi}|}{\sqrt{5 + 4\cos\brak{\omega + 2\pi}}} \\
-											   &= \frac{4|\cos{\omega}|}{\sqrt{5 + 4\cos{\omega}}} \\
-											   &= \left|H\brak{e^{j\omega}}\right|	
-\end{align}
-Therefore, the fundamental period is $2\pi$ , which implies that DTFT of a signal is always periodic.
-
 \begin{figure}[!ht]
 \centering
 \includegraphics[width=\columnwidth]{figs/H(z).png}
@@ -273,7 +290,6 @@ Therefore, the fundamental period is $2\pi$ , which implies that DTFT of a signa
 \begin{enumerate}[label=\thesection.\arabic*]
 \item \label{prob:impulse_resp}
 Find an expression for $h(n)$ using $H(z)$, given that 
-%in Problem \ref{eq:ztransab} and \eqref{eq:anun}, given that
 \begin{equation}
 \label{eq:impulse_resp}
 h(n) \system{Z} H(z)
@@ -300,7 +316,7 @@ https://github.com/Avyaaz13/Audio-Filtering/blob/main/Audio%20Filtering/codes/h.
 \caption{$h(n)$ \text{ vs } $n$}
 \label{fig:hn}
 \end{figure}
-
+\newpage
 \item The system with $h(n)$ is defined to be stable if
 \begin{equation}
 \sum_{n=-\infty}^{\infty}h(n) < \infty \label{eq:stabilty_condn}
@@ -325,11 +341,11 @@ Compute and sketch $h(n)$ using
 \label{eq:iir_filter_h}
 h(n) + \frac{1}{2}h(n-1) = \delta(n) + \delta(n-2), 
 \end{equation}
-%
+
 This is the definition of $h(n)$.
 \\
 \solution\\
-Definition of $h\brak{n}$: The output of the system when $\delta\brak{n}$ is given as input.\\
+{\em Definition of $h\brak{n}$}: The output of the system when $\delta\brak{n}$ is given as input.\\
 
 The following code plots Fig. \ref{fig:hndef}. Note that this is the same as Fig. 
 \ref{fig:hn}. 
@@ -337,6 +353,7 @@ The following code plots Fig. \ref{fig:hndef}. Note that this is the same as Fig
 \begin{lstlisting}
 https://github.com/Avyaaz13/Audio-Filtering/blob/main/Audio%20Filtering/codes/hndef.py
 \end{lstlisting}
+
 \begin{figure}[!ht]
 \centering
 \includegraphics[width=\columnwidth]{figs/hndef}
@@ -344,7 +361,6 @@ https://github.com/Avyaaz13/Audio-Filtering/blob/main/Audio%20Filtering/codes/hn
 \label{fig:hndef}
 \end{figure}
 
-\newpage
 
 \item Compute 
 \begin{equation}
@@ -359,7 +375,7 @@ Comment. The operation in \eqref{eq:convolution} is known as
 \solution Below code plots Fig. \ref{fig:ynconv}. Note that this is the same as 
 $y(n)$ in  Fig. 
 \ref{fig:xnyn}. 
-%
+
 \begin{lstlisting}
 https://github.com/Avyaaz13/Audio-Filtering/blob/main/Audio%20Filtering/codes/ynconv.py
 \end{lstlisting}
@@ -419,7 +435,7 @@ https://github.com/Avyaaz13/Audio-Filtering/blob/main/Audio%20Filtering/codes/IF
 \begin{figure}[!ht]
 \centering
 \includegraphics[width=\columnwidth]{figs/yn_ver.png}
-\caption{$y(n)$ obtained from IFFT}
+\caption{$y(n)$ obtained using IFFT}
 \label{fig:yn_verf_5.4}
 \end{figure}
 
@@ -466,7 +482,6 @@ https://github.com/Avyaaz13/Audio-Filtering/blob/main/Audio%20Filtering/codes/ma
 \caption{$y(n)$ from DFT Matrix}
 \label{fig:yn_DFT_matrix}
 \end{figure}
-
 \section{\underline{\textbf{EXERCISES}}}
 \noindent Answer the following questions by looking at the python code in Problem \ref{py:audio_filter}.
 \begin{enumerate}[label=\thesection.\arabic*]
@@ -485,16 +500,24 @@ where the input signal is $x(n)$ and the output signal is $y(n)$ with initial va
 \textbf{signal. filtfilt} with your own routine and verify.\\
 
 \solution The below code gives the output of an Audio Filter without using the built in function signal.lfilter.
+
 \begin{lstlisting}
-https://github.com/Avyaaz13/Audio-Filtering/blob/main/Audio%20Filtering/codes/filtfilt.py 
+https://github.com/Avyaaz13/Audio-Filtering/blob/main/Audio%20Filtering/codes/filtfilt.py
 \end{lstlisting}
 \begin{figure}[!ht]
 \centering
 \includegraphics[width=1.2\columnwidth]{figs/Figure_1.png}
-\caption{Both the outputs using and without using function overlap}
+\caption{Verifying the output using and without using {\em signal.filtfilt}}
 \label{fig:6.1}
 \end{figure}
-
+\begin{align}
+a &= \begin{bmatrix}
+1 & -1.87302725 & 1.30032695 & -0.31450204 
+\end{bmatrix}\nonumber\\
+b &= \begin{bmatrix}
+0.0140997 & 0.0422991 & 0.0422991 & 0.0140997 
+\end{bmatrix}\nonumber
+\end{align}
 \item Repeat all the exercises in the previous sections for the above $a$ and $b$.\\
 \solution The code in \ref{py:audio_filter} generates the values of $a$ and $b$  which can be used to generate a difference equation.\\
 And,
@@ -506,6 +529,79 @@ From \ref{eq:iir_filter_gen}
 \begin{align}
     &a\brak{0}y\brak{n} + a\brak{1}y\brak{n-1}+a\brak{2}y\brak{n-2}+a\brak{3}\notag\\ \notag &y\brak{n-3} =   b\brak{0}x\brak{n} + b\brak{1}x\brak{n-1}\\ \notag &+b\brak{2}x\brak{n-2}+b\brak{3}x\brak{n-3} 
 \end{align}
+
+Difference Equation is given by :
+\begin{multline}
+      y(n) - 1.87 y(n - 1) + 1.3 y(n - 2) - 0.31 y(n - 3) \nonumber \\
+	= 0.014 x(n) + 0.042 x(n - 1) + 0.042 x(n - 2) \\\nonumber
+        + 0.014 x(n - 3) 
+\end{multline}
+
+From \eqref{eq:iir_filter_gen} 
+\begin{align}
+    H(z) &= \frac{b(0) + b(1) z^{-1} + b(2) z^{-2} + \ldots + b(N) z^{-N}}{a(0) + a(1) z^{-1} + a(2) z^{-2} + \ldots + a(M) z^{-M}}\\
+    H(z) &= \frac{\sum_{k = 0}^{N}b(k)z^{-k}}{\sum_{k = 0}^{M}a(k)z^{-k}} \label{eq:trans-func}
+\end{align}
+Now,
+\begin{align}
+    \delta\brak{n-k} \system{Z} z^{-k}\label{eq:res-1}
+\end{align}
+Let us assume that a causal sequence is to be obtained using Long Division Method:
+
+Taking inverse z transform of \eqref{eq:trans-func} by using \eqref{eq:res-1}:
+\begin{multline}
+h(n) = 0.014\delta(n) \,+\, 0.069 \delta(n - 1)\, +\, 0.153\delta(n - 2) \\ + \,0.215\delta(n - 3) \,+ \, 0.226\delta(n - 4) \,+\, 0.192 \delta(n - 5) + ......
+\end{multline}
+
+% h(0) = 0.014099708769044324
+% h(1) = 0.0687082650263731
+% h(2) = 0.15265734752823878
+% h(3) = 0.2151222584561684
+% h(4) = 0.22603427726013037
+% h(5) = 0.19165013578935938
+
+Below is the code which plots the {\em Impulse response:}
+\begin{lstlisting}
+ https://github.com/Avyaaz13/Audio-Filtering/blob/main/Audio%20Filtering/codes/hn.py
+ \end{lstlisting}
+% \input{tables/audio_filter_tab}
+\begin{figure}[!ht]
+\centering
+\includegraphics[width=\columnwidth]{figs/h(n)_custom.png}
+\caption{$h(n) vs n$}
+\label{fig:hn_custom}
+\end{figure}
+\textbf{Stability of h(n)}:\\
+According to \eqref{eq:stabilty_condn}
+\begin{align}
+H\brak{z} &= \sum_{n = 0}^{\infty} h\brak{n}z^{-n}\\
+H(1)&= \sum_{n = 0}^{\infty}h(n)  = \frac{\sum_{k = 0}^{N}b(k)}{\sum_{k = 0}^{M}a(k)}< \infty
+\end{align}
+As both $a\brak{k}$ and $b\brak{k}$ are finite length sequences they converge.\\
+Below code plots Frequency response:
+\begin{lstlisting}
+https://github.com/Avyaaz13/Audio-Filtering/blob/main/Audio%20Filtering/codes/Hz_custom.py
+\end{lstlisting}
+\begin{figure}[H]
+\centering
+\includegraphics[width=\columnwidth]{figs/Filter_Response.png}
+\caption{Frequency Response of Audio Filter}
+\label{fig:H(w)}
+\end{figure}
+
+\item What is the sampling frequency of the input signal?\\
+\solution The Sampling Frequency is 44.1KHz
+\item
+What is type, order and  cutoff-frequency of the above butterworth filter
+\\
+\solution The given butterworth filter is lowpass with order = $3$ and cutoff-frequency = $4kHz$.
+
+\item
+Modify the code with different input parameters and get the best possible output.
+
+\solution
+A better filtering was found when order of the filter is 5.
+
 \end{enumerate}
 
 

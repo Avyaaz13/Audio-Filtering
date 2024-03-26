@@ -16,13 +16,6 @@ cutoff_freq = 4000.0
 Wn = 2 * cutoff_freq / fs
 b, a = signal.butter(order, Wn, 'low')
 
-# Ensure the signal is long enough for the filter
-if len(input_signal) < max(3 * (max(len(a), len(b)) - 1), 15):
-    raise ValueError("Input signal is too short for the specified filter order and padding.")
-
-print(a)
-print(b)
-
 # Filter the input signal with a Butterworth filter
 output_signal = signal.filtfilt(b, a, input_signal, method="gust")
 
