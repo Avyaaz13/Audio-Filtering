@@ -17,7 +17,7 @@ H_fft = fft(h)
 Y_fft = H_fft*X_fft
 y_ifft = ifft(Y_fft).real
 
-plt.stem(range(0,14),y_ifft[:14],markerfmt='ro')
+plt.stem(range(0,14),y_ifft[:14],markerfmt='ro',basefmt = 'k',linefmt = 'bo-')
 plt.xlabel('$n$')
 plt.ylabel('$y(n)$')
 plt.grid()

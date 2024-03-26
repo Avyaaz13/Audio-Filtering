@@ -12,7 +12,6 @@ for n in range(3,k-1):
 
 #subplots
 plt.stem(range(0,k),h,linefmt='b-', markerfmt='ro', basefmt='k')
-plt.title('Impulse Response Definition')
 plt.xlabel('$n$')
 plt.ylabel('$h(n)$')
 plt.grid()
