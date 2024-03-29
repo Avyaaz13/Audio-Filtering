@@ -88,7 +88,7 @@ https://github.com/Avyaaz13/Audio-Filtering/blob/main/Audio%20Filtering/codes/In
 \item 
 \label{Python code}
 Below is the Python Code to perform the Audio Filtering:
-\lstinputlisting{./codes/noise_red.py}\label{py:audio_filter}
+\lstinputlisting{./codes/1.2_noise_red.py}\label{py:audio_filter}
 
 \item 
 \label{Visualization}
@@ -132,18 +132,18 @@ Sketch $y(n)$.
 Solve\\
 \solution  The C code calculates $y\brak{n}$ and Python plots the graph.
 \begin{lstlisting}
-https://github.com/Avyaaz13/Audio-Filtering/blob/main/Audio%20Filtering/codes/xnyn.c
+https://github.com/Avyaaz13/Audio-Filtering/blob/main/Audio%20Filtering/codes/2.2_xnyn.c
 \end{lstlisting} 
 Below are the plots of the $x(n)$ and $y(n)$:
 \begin{lstlisting}
-https://github.com/Avyaaz13/Audio-Filtering/blob/main/Audio%20Filtering/codes/xnyn.py
+https://github.com/Avyaaz13/Audio-Filtering/blob/main/Audio%20Filtering/codes/2.2_xnyn.py
 \end{lstlisting}
 
 \begin{figure}[!ht]
 	\centering
 	\includegraphics[width=\columnwidth]{figs/Plot_xnyn.png}
 	\caption{Plot of $x(n)$ and $y(n)$}
-	\label{fig:xnyn}
+	\label{fig:xnyn_graph}
 \end{figure}
 \end{enumerate}
 \section{Z-Transform}
@@ -251,7 +251,7 @@ known as the {\em Discrete Time Fourier Transform} (DTFT) of $x(n)$.
 \\
 \solution Below is the code which plots the magnitude of Transfer Function:
 \begin{lstlisting}
-https://github.com/Avyaaz13/Audio-Filtering/blob/main/Audio%20Filtering/codes/H.py
+https://github.com/Avyaaz13/Audio-Filtering/blob/main/Audio%20Filtering/codes/3.5_H.py
 \end{lstlisting}
 
 
@@ -308,7 +308,7 @@ using \eqref{eq:anun} and \eqref{eq:z_trans_shift}.
 \\
 \solution The following code plots $h\brak{n}$ 
 \begin{lstlisting}
-https://github.com/Avyaaz13/Audio-Filtering/blob/main/Audio%20Filtering/codes/h.py
+https://github.com/Avyaaz13/Audio-Filtering/blob/main/Audio%20Filtering/codes/4.2_h.py
 \end{lstlisting}
 \begin{figure}[!ht]
 \centering
@@ -316,13 +316,13 @@ https://github.com/Avyaaz13/Audio-Filtering/blob/main/Audio%20Filtering/codes/h.
 \caption{$h(n)$ \text{ vs } $n$}
 \label{fig:hn}
 \end{figure}
-\newpage
+
 \item The system with $h(n)$ is defined to be stable if
 \begin{equation}
-\sum_{n=-\infty}^{\infty}h(n) < \infty \label{eq:stabilty_condn}
+\sum_{n=-\infty}^{\infty}h(n) < \infty \label{eq:stb_condn}
 \end{equation}
 Is the system defined by \eqref{q:2.2} stable for the impulse response in \eqref{eq:impulse_resp}?\\
-\solution For stable system \eqref{eq:stabilty_condn} should converge.\\
+\solution For stable system \eqref{eq:stb_condn} should converge.\\
 By using ratio test for convergence:
 \begin{align}
     \lim_{n \to \infty}\left|\frac{h(n + 1)}{h(n)}\right|&<1 \\
@@ -347,11 +347,10 @@ This is the definition of $h(n)$.
 \solution\\
 {\em Definition of $h\brak{n}$}: The output of the system when $\delta\brak{n}$ is given as input.\\
 
-The following code plots Fig. \ref{fig:hndef}. Note that this is the same as Fig. 
-\ref{fig:hn}. 
+Below code plots \figref{fig:hndef} which is same as the \figref{fig:hn}. 
 
 \begin{lstlisting}
-https://github.com/Avyaaz13/Audio-Filtering/blob/main/Audio%20Filtering/codes/hndef.py
+https://github.com/Avyaaz13/Audio-Filtering/blob/main/Audio%20Filtering/codes/4.4_hndef.py
 \end{lstlisting}
 
 \begin{figure}[!ht]
@@ -361,23 +360,22 @@ https://github.com/Avyaaz13/Audio-Filtering/blob/main/Audio%20Filtering/codes/hn
 \label{fig:hndef}
 \end{figure}
 
-
 \item Compute 
 \begin{equation}
-\label{eq:convolution}
+\label{eq:convolve}
 y(n) = x(n)*h(n) = \sum_{n=-\infty}^{\infty}x(k)h(n-k)
 \end{equation}
 
-Comment. The operation in \eqref{eq:convolution} is known as
+Comment. The operation in \eqref{eq:convolve} is known as
 {\em convolution}.
 %
 \\
-\solution Below code plots Fig. \ref{fig:ynconv}. Note that this is the same as 
-$y(n)$ in  Fig. 
-\ref{fig:xnyn}. 
+\solution Below code plots \figref{fig:ynconv} which is same as 
+$y(n)$ in
+\figref{fig:xnyn_graph}. 
 
 \begin{lstlisting}
-https://github.com/Avyaaz13/Audio-Filtering/blob/main/Audio%20Filtering/codes/ynconv.py
+https://github.com/Avyaaz13/Audio-Filtering/blob/main/Audio%20Filtering/codes/4.5_ynconv.py
 \end{lstlisting}
 \begin{figure}[!ht]
 \centering
@@ -391,7 +389,7 @@ https://github.com/Avyaaz13/Audio-Filtering/blob/main/Audio%20Filtering/codes/yn
 y(n) =  \sum_{n=-\infty}^{\infty}x(n-k)h(k)
 \end{equation}
 \solution
-In \eqref{eq:convolution}, we substitute $k = n - k$ to get
+In \eqref{eq:convolve}, we substitute $k = n - k$ to get
 \begin{align}
 y\brak{n} &= \sum_{k=-\infty}^{\infty}x\brak{k}h\brak{n - k} \\
 		  &= \sum_{n - k=-\infty}^{\infty}x\brak{n - k}h\brak{k} \\
@@ -415,26 +413,26 @@ Y(k) = X(k)H(k)
 \item Compute
 \begin{equation}
 y\brak{n}={\frac {1}{N}}\sum _{k=0}^{N-1}Y\brak{k}\cdot e^{\j 2\pi kn/N},\quad n = 0,1,\dots, N-1
-\label{eq:inv-ft}
+\label{eq:I-FT}
 \end{equation}
 
 \solution The above three questions are solved using the code below.
 \begin{lstlisting}
-https://github.com/Avyaaz13/Audio-Filtering/blob/main/Audio%20Filtering/codes/5sol.py
+https://github.com/Avyaaz13/Audio-Filtering/blob/main/Audio%20Filtering/codes/5.1_2_3.py
 \end{lstlisting}
 \begin{figure}[!ht]
 \centering
-\includegraphics[width=\columnwidth]{figs/yn_by_dft.png}
+\includegraphics[width=\columnwidth]{figs/yn_DFT.png}
 \caption{$y(n)$ obtained from DFT}
 \end{figure}
 \item Repeat the previous exercise by computing $X(k), H(k)$ and $y(n)$ through FFT and IFFT.
 \solution The solution of this question can be found in the code below.
 \begin{lstlisting}
-https://github.com/Avyaaz13/Audio-Filtering/blob/main/Audio%20Filtering/codes/IFFT_IDFT.py 
+https://github.com/Avyaaz13/Audio-Filtering/blob/main/Audio%20Filtering/codes/5.4_FFT.py 
 \end{lstlisting}
 \begin{figure}[!ht]
 \centering
-\includegraphics[width=\columnwidth]{figs/yn_ver.png}
+\includegraphics[width=\columnwidth]{figs/yn_FFT.png}
 \caption{$y(n)$ obtained using IFFT}
 \label{fig:yn_verf_5.4}
 \end{figure}
@@ -474,7 +472,7 @@ Thus we can rewrite  \eqref{eq:fp} as:
 \end{enumerate}
 The below code computes $y\brak{n}$ by DFT Matrix and then plots it.
 \begin{lstlisting}
-https://github.com/Avyaaz13/Audio-Filtering/blob/main/Audio%20Filtering/codes/matrix.py
+https://github.com/Avyaaz13/Audio-Filtering/blob/main/Audio%20Filtering/codes/5.5_matrix.py
 \end{lstlisting}
 \begin{figure}[!ht]
 \centering
@@ -502,7 +500,7 @@ where the input signal is $x(n)$ and the output signal is $y(n)$ with initial va
 \solution The below code gives the output of an Audio Filter without using the built in function signal.lfilter.
 
 \begin{lstlisting}
-https://github.com/Avyaaz13/Audio-Filtering/blob/main/Audio%20Filtering/codes/filtfilt.py
+https://github.com/Avyaaz13/Audio-Filtering/blob/main/Audio%20Filtering/codes/6.1_filtfilt.py
 \end{lstlisting}
 \begin{figure}[!ht]
 \centering
@@ -510,6 +508,9 @@ https://github.com/Avyaaz13/Audio-Filtering/blob/main/Audio%20Filtering/codes/fi
 \caption{Verifying the output using and without using {\em signal.filtfilt}}
 \label{fig:6.1}
 \end{figure}
+
+\item Repeat all the exercises in the previous sections for the above $a$ and $b$.\\
+\solution The code in \ref{py:audio_filter} generates the values of $a$ and $b$  which can be used to generate a difference equation.
 \begin{align}
 a &= \begin{bmatrix}
 1 & -1.87302725 & 1.30032695 & -0.31450204 
@@ -518,8 +519,6 @@ b &= \begin{bmatrix}
 0.0140997 & 0.0422991 & 0.0422991 & 0.0140997 
 \end{bmatrix}\nonumber
 \end{align}
-\item Repeat all the exercises in the previous sections for the above $a$ and $b$.\\
-\solution The code in \ref{py:audio_filter} generates the values of $a$ and $b$  which can be used to generate a difference equation.\\
 And,
 \begin{align}
     M &= 4\\
@@ -562,17 +561,16 @@ h(n) = 0.014\delta(n) \,+\, 0.069 \delta(n - 1)\, +\, 0.153\delta(n - 2) \\ + \,
 
 Below is the code which plots the {\em Impulse response:}
 \begin{lstlisting}
- https://github.com/Avyaaz13/Audio-Filtering/blob/main/Audio%20Filtering/codes/hn.py
+ https://github.com/Avyaaz13/Audio-Filtering/blob/main/Audio%20Filtering/codes/6.2_hn.py
  \end{lstlisting}
-% \input{tables/audio_filter_tab}
 \begin{figure}[!ht]
 \centering
 \includegraphics[width=\columnwidth]{figs/h(n)_custom.png}
-\caption{$h(n) vs n$}
+\caption{$h(n)$ vs $n$}
 \label{fig:hn_custom}
 \end{figure}
 \textbf{Stability of h(n)}:\\
-According to \eqref{eq:stabilty_condn}
+According to \eqref{eq:stb_condn}
 \begin{align}
 H\brak{z} &= \sum_{n = 0}^{\infty} h\brak{n}z^{-n}\\
 H(1)&= \sum_{n = 0}^{\infty}h(n)  = \frac{\sum_{k = 0}^{N}b(k)}{\sum_{k = 0}^{M}a(k)}< \infty
@@ -580,7 +578,7 @@ H(1)&= \sum_{n = 0}^{\infty}h(n)  = \frac{\sum_{k = 0}^{N}b(k)}{\sum_{k = 0}^{M}
 As both $a\brak{k}$ and $b\brak{k}$ are finite length sequences they converge.\\
 Below code plots Frequency response:
 \begin{lstlisting}
-https://github.com/Avyaaz13/Audio-Filtering/blob/main/Audio%20Filtering/codes/Hz_custom.py
+https://github.com/Avyaaz13/Audio-Filtering/blob/main/Audio%20Filtering/codes/6.2_Hz_custom.py
 \end{lstlisting}
 \begin{figure}[H]
 \centering
@@ -600,7 +598,7 @@ What is type, order and  cutoff-frequency of the above butterworth filter
 Modify the code with different input parameters and get the best possible output.
 
 \solution
-A better filtering was found when order of the filter is 5.
+A better filtering was found when order of the filter is 4.
 
 \end{enumerate}
 

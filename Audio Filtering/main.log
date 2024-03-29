@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2024.3.26)  26 MAR 2024 20:18
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2024.3.26)  29 MAR 2024 20:20
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1373,7 +1373,7 @@ File: ts1txr.fd 2000/12/15 v3.1
 \openout6 = `main.toc'.
 
 
-(./codes/noise_red.py)
+(./codes/1.2_noise_red.py)
 <figs/Input_audio_signal.jpg, id=39, 822.07124pt x 546.04pt>
 File: figs/Input_audio_signal.jpg Graphic file (type jpg)
 <use figs/Input_audio_signal.jpg>
@@ -1409,102 +1409,102 @@ Underfull \hbox (badness 10000) in paragraph at lines 345--349
 
  []
 
-<figs/hndef.png, id=176, 462.528pt x 346.896pt>
+<figs/hndef.png, id=174, 462.528pt x 346.896pt>
 File: figs/hndef.png Graphic file (type png)
 <use figs/hndef.png>
-Package pdftex.def Info: figs/hndef.png  used on input line 359.
+Package pdftex.def Info: figs/hndef.png  used on input line 358.
 (pdftex.def)             Requested size: 252.0pt x 189.00427pt.
-<figs/y_by_conv.png, id=180, 462.528pt x 346.896pt>
+<figs/y_by_conv.png, id=178, 462.528pt x 346.896pt>
 File: figs/y_by_conv.png Graphic file (type png)
 <use figs/y_by_conv.png>
-Package pdftex.def Info: figs/y_by_conv.png  used on input line 384.
+Package pdftex.def Info: figs/y_by_conv.png  used on input line 382.
 (pdftex.def)             Requested size: 252.0pt x 189.00427pt.
 
-LaTeX Warning: Command \j invalid in math mode on input line 407.
+Underfull \vbox (badness 1824) has occurred while \output is active []
 
-[4 <./figs/hn.png> <./figs/hndef.png>]
+ [4 <./figs/hn.png> <./figs/hndef.png>]
 
-LaTeX Warning: Command \j invalid in math mode on input line 417.
+LaTeX Warning: Command \j invalid in math mode on input line 405.
 
-<figs/yn_by_dft.png, id=210, 462.528pt x 346.896pt>
-File: figs/yn_by_dft.png Graphic file (type png)
-<use figs/yn_by_dft.png>
-Package pdftex.def Info: figs/yn_by_dft.png  used on input line 427.
+
+LaTeX Warning: Command \j invalid in math mode on input line 415.
+
+<figs/yn_DFT.png, id=207, 462.528pt x 346.896pt>
+File: figs/yn_DFT.png Graphic file (type png)
+<use figs/yn_DFT.png>
+Package pdftex.def Info: figs/yn_DFT.png  used on input line 425.
 (pdftex.def)             Requested size: 252.0pt x 189.00427pt.
-<figs/yn_ver.png, id=211, 462.528pt x 346.896pt>
-File: figs/yn_ver.png Graphic file (type png)
-<use figs/yn_ver.png>
-Package pdftex.def Info: figs/yn_ver.png  used on input line 437.
+<figs/yn_FFT.png, id=208, 462.528pt x 346.896pt>
+File: figs/yn_FFT.png Graphic file (type png)
+<use figs/yn_FFT.png>
+Package pdftex.def Info: figs/yn_FFT.png  used on input line 435.
 (pdftex.def)             Requested size: 252.0pt x 189.00427pt.
-
-Underfull \vbox (badness 1881) has occurred while \output is active []
-
- [5 <./figs/y_by_conv.png> <./figs/yn_by_dft.png> <./figs/yn_ver.png>]
-<figs/matrix.png, id=236, 462.528pt x 346.896pt>
+[5 <./figs/y_by_conv.png> <./figs/yn_DFT.png> <./figs/yn_FFT.png>]
+<figs/matrix.png, id=235, 462.528pt x 346.896pt>
 File: figs/matrix.png Graphic file (type png)
 <use figs/matrix.png>
-Package pdftex.def Info: figs/matrix.png  used on input line 481.
+Package pdftex.def Info: figs/matrix.png  used on input line 479.
 (pdftex.def)             Requested size: 252.0pt x 189.00427pt.
 LaTeX Font Info:    Font shape `OT1/txr/b/sc' in size <12> not available
-(Font)              Font shape `OT1/txr/bx/sc' tried instead on input line 485.
+(Font)              Font shape `OT1/txr/bx/sc' tried instead on input line 483.
 
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 485.
+(hyperref)                removing `math shift' on input line 483.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@@underline' on input line 485.
+(hyperref)                removing `\@@underline' on input line 483.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\hbox' on input line 485.
+(hyperref)                removing `\hbox' on input line 483.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\mathsurround' on input line 485.
+(hyperref)                removing `\mathsurround' on input line 483.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\z@' on input line 485.
+(hyperref)                removing `\z@' on input line 483.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 485.
+(hyperref)                removing `math shift' on input line 483.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 497--501
+Underfull \hbox (badness 10000) in paragraph at lines 495--499
 
  []
 
-<figs/Figure_1.png, id=239, 987.2082pt x 478.4274pt>
+<figs/Figure_1.png, id=238, 987.2082pt x 478.4274pt>
 File: figs/Figure_1.png Graphic file (type png)
 <use figs/Figure_1.png>
-Package pdftex.def Info: figs/Figure_1.png  used on input line 509.
+Package pdftex.def Info: figs/Figure_1.png  used on input line 507.
 (pdftex.def)             Requested size: 302.39923pt x 146.5516pt.
 
-Overfull \hbox (50.39923pt too wide) in paragraph at lines 509--510
+Overfull \hbox (50.39923pt too wide) in paragraph at lines 507--508
  [][] 
  []
 
 
-Overfull \hbox (34.53061pt too wide) detected at line 520
+Overfull \hbox (34.53061pt too wide) detected at line 521
 []
  []
 
 
-Overfull \hbox (6.75394pt too wide) detected at line 531
-[]
- []
-
-
-Overfull \hbox (6.91942pt too wide) detected at line 544
+Overfull \hbox (6.75394pt too wide) detected at line 530
 []
  []
 
 [6 <./figs/matrix.png> <./figs/Figure_1.png>]
-Overfull \hbox (6.53441pt too wide) detected at line 554
+Overfull \hbox (6.91942pt too wide) detected at line 543
+[]
+ []
+
+
+Overfull \hbox (6.53441pt too wide) detected at line 553
  []$[]  \OML/txmi/m/it/12 h\OT1/txr/m/n/12 (\OML/txmi/m/it/12 n\OT1/txr/m/n/12 
 ) = 0\OML/txmi/m/it/12 :\OT1/txr/m/n/12 014\OML/txmi/m/it/12 ^^N\OT1/txr/m/n/12
  (\OML/txmi/m/it/12 n\OT1/txr/m/n/12 )  +  0\OML/txmi/m/it/12 :\OT1/txr/m/n/12 
@@ -1515,7 +1515,7 @@ Overfull \hbox (6.53441pt too wide) detected at line 554
  []
 
 
-Overfull \hbox (21.13979pt too wide) detected at line 554
+Overfull \hbox (21.13979pt too wide) detected at line 553
  []$[] \OT1/txr/m/n/12 +  0\OML/txmi/m/it/12 :\OT1/txr/m/n/12 215\OML/txmi/m/it
 /12 ^^N\OT1/txr/m/n/12 (\OML/txmi/m/it/12 n \OMS/txsy/m/n/12 ^^@ \OT1/txr/m/n/1
 2 3)  +  0\OML/txmi/m/it/12 :\OT1/txr/m/n/12 226\OML/txmi/m/it/12 ^^N\OT1/txr/m
@@ -1528,25 +1528,22 @@ m/it/12 n \OMS/txsy/m/n/12 ^^@ \OT1/txr/m/n/12 5) + \OML/txmi/m/it/12 ::::::$ [
 <figs/h(n)_custom.png, id=268, 462.528pt x 346.896pt>
 File: figs/h(n)_custom.png Graphic file (type png)
 <use figs/h(n)_custom.png>
-Package pdftex.def Info: figs/h(n)_custom.png  used on input line 570.
+Package pdftex.def Info: figs/h(n)_custom.png  used on input line 568.
 (pdftex.def)             Requested size: 252.0pt x 189.00427pt.
 <figs/Filter_Response.png, id=270, 462.528pt x 346.896pt>
 File: figs/Filter_Response.png Graphic file (type png)
 <use figs/Filter_Response.png>
-Package pdftex.def Info: figs/Filter_Response.png  used on input line 587.
+Package pdftex.def Info: figs/Filter_Response.png  used on input line 585.
 (pdftex.def)             Requested size: 252.0pt x 189.00427pt.
 [7 <./figs/h(n)_custom.png> <./figs/Filter_Response.png>] (./main.aux)
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
 Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: C50489AC4B237CCA6623115DF81D02F2;673.
  ) 
 Here is how much of TeX's memory you used:
- 45193 strings out of 478287
- 1034347 string characters out of 5849289
+ 45194 strings out of 478287
+ 1034360 string characters out of 5849289
  1895057 words of memory out of 5000000
- 62486 multiletter control sequences out of 15000+600000
+ 62487 multiletter control sequences out of 15000+600000
  531854 words of font info for 151 fonts, out of 8000000 for 9000
  1144 hyphenation exceptions out of 8191
  115i,17n,118p,424b,1661s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1564,7 +1561,7 @@ xmf-dist/fonts/type1/public/txfonts/txsy.pfb></usr/share/texlive/texmf-dist/fon
 ts/type1/public/txfonts/txsya.pfb></usr/share/texlive/texmf-dist/fonts/type1/ur
 w/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.
 pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on main.pdf (7 pages, 385444 bytes).
+Output written on main.pdf (7 pages, 382822 bytes).
 PDF statistics:
  382 PDF objects out of 1000 (max. 8388607)
  320 compressed objects within 4 object streams

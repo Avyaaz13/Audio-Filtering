@@ -9,7 +9,7 @@ def H(z):
 
 omega = np.linspace(-3*np.pi,3*np.pi,100)
 
-plt.plot(omega, abs(H(np.exp(1j*omega))))
+plt.plot(omega, abs(H(np.exp(1j*omega))),color = 'blue')
 plt.xlabel('$\omega$')
 plt.ylabel('$|H(e^{\jmath\omega})| $')
 plt.grid()

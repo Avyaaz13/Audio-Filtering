@@ -33,9 +33,8 @@ for k in range(0,N):
 y = np.real(y)/N
 
 plt.stem(range(0,N),y, linefmt='b-', markerfmt='ro', basefmt='k')
-plt.title("y(n) by DFT")
 plt.xlabel('$n$')
 plt.ylabel('$y(n)$')
 plt.grid()
-
-plt.savefig('yn_by_dft.png')
+plt.legend(['DFT'])
+plt.savefig('yn_DFT.png')
