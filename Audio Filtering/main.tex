@@ -497,7 +497,7 @@ in Problem \ref{py:audio_filter} is executed through the following difference eq
 where the input signal is $x(n)$ and the output signal is $y(n)$ with initial values all 0. Replace
 \textbf{signal. filtfilt} with your own routine and verify.\\
 
-\solution The below code gives the output of an Audio Filter without using the built in function signal.lfilter.
+\solution The below code gives the output of an Audio Filter without using the built in function signal.filtfilt.
 
 \begin{lstlisting}
 https://github.com/Avyaaz13/Audio-Filtering/blob/main/Audio%20Filtering/codes/6.1_filtfilt.py
@@ -508,6 +508,19 @@ https://github.com/Avyaaz13/Audio-Filtering/blob/main/Audio%20Filtering/codes/6.
 \caption{Verifying the output using and without using {\em signal.filtfilt}}
 \label{fig:6.1}
 \end{figure}
+
+\solution The below code gives the output of an Audio Filter without using the built in function signal.lfilter.
+
+\begin{lstlisting}
+https://github.com/Avyaaz13/Audio-Filtering/blob/main/Audio%20Filtering/codes/lfilt.py
+\end{lstlisting}
+\begin{figure}[!ht]
+\centering
+\includegraphics[width=1.2\columnwidth]{figs/lfilt.png}
+\caption{Verifying the output using and without using {\em signal.lfilter}}
+\label{fig:6.1_lfilt}
+\end{figure}
+
 
 \item Repeat all the exercises in the previous sections for the above $a$ and $b$.\\
 \solution The code in \ref{py:audio_filter} generates the values of $a$ and $b$  which can be used to generate a difference equation.
@@ -521,8 +534,8 @@ b &= \begin{bmatrix}
 \end{align}
 And,
 \begin{align}
-    M &= 4\\
-    N&=4
+    M &= 3\\
+    N &= 3
 \end{align}
 From \ref{eq:iir_filter_gen} 
 \begin{align}
@@ -541,11 +554,43 @@ From \eqref{eq:iir_filter_gen}
     H(z) &= \frac{b(0) + b(1) z^{-1} + b(2) z^{-2} + \ldots + b(N) z^{-N}}{a(0) + a(1) z^{-1} + a(2) z^{-2} + \ldots + a(M) z^{-M}}\\
     H(z) &= \frac{\sum_{k = 0}^{N}b(k)z^{-k}}{\sum_{k = 0}^{M}a(k)z^{-k}} \label{eq:trans-func}
 \end{align}
+
+Below code plots\figref{fig:H(w)} Frequency response:
+\begin{lstlisting}
+https://github.com/Avyaaz13/Audio-Filtering/blob/main/Audio%20Filtering/codes/6.2_Hz_custom.py
+\end{lstlisting}
+\begin{figure}[!ht]
+\centering
+\includegraphics[width=\columnwidth]{figs/Filter_Response.png}
+\caption{Frequency Response of Audio Filter}
+\label{fig:H(w)}
+\end{figure}
+
+Below code plots \figref{fig: zero-pole} Zero-Pole graph:
+\begin{lstlisting}
+https://github.com/Avyaaz13/Audio-Filtering/blob/main/Audio%20Filtering/codes/zero-pole.py
+\end{lstlisting}
+\begin{figure}[!ht]
+\centering
+\includegraphics[width=\columnwidth]{figs/pole_zero.png}
+\caption{Zero-Pole plot}
+\label{fig: zero-pole}
+\end{figure}
+
+\begin{align}
+\because&\text{Zeroes}\approx \begin{bmatrix}
+-1 & -1 & -1
+\end{bmatrix}\nonumber\\
+&\text{Poles}= \begin{bmatrix}
+0.663 + 0.368j & 0.663 - 0.368j & 0.547 
+\end{bmatrix}\nonumber
+\end{align}
+
 Now,
 \begin{align}
     \delta\brak{n-k} \system{Z} z^{-k}\label{eq:res-1}
 \end{align}
-Let us assume that a causal sequence is to be obtained using Long Division Method:
+Let us assume that a causal sequence is to be obtained using \textbf{Long Division Method:}
 
 Taking inverse z transform of \eqref{eq:trans-func} by using \eqref{eq:res-1}:
 \begin{multline}
@@ -576,17 +621,53 @@ H\brak{z} &= \sum_{n = 0}^{\infty} h\brak{n}z^{-n}\\
 H(1)&= \sum_{n = 0}^{\infty}h(n)  = \frac{\sum_{k = 0}^{N}b(k)}{\sum_{k = 0}^{M}a(k)}< \infty
 \end{align}
 As both $a\brak{k}$ and $b\brak{k}$ are finite length sequences they converge.\\
-Below code plots Frequency response:
+
+\item Compute 
+\begin{equation}
+\label{eq:convolve}
+y(n) = x(n)*h(n) = \sum_{n=-\infty}^{\infty}x(k)h(n-k)
+\end{equation}
+
+Comment. The operation in \eqref{eq:convolve} is known as
+{\em convolution}.
+%
+\\
+\solution Below code plots \figref{fig:ynconv6} 
+
 \begin{lstlisting}
-https://github.com/Avyaaz13/Audio-Filtering/blob/main/Audio%20Filtering/codes/6.2_Hz_custom.py
+https://github.com/Avyaaz13/Audio-Filtering/blob/main/Audio%20Filtering/codes/6.3_ynconv.py
 \end{lstlisting}
-\begin{figure}[H]
+\begin{figure}[!ht]
 \centering
-\includegraphics[width=\columnwidth]{figs/Filter_Response.png}
-\caption{Frequency Response of Audio Filter}
-\label{fig:H(w)}
+\includegraphics[width=\columnwidth]{figs/6.2_yncon.png}
+\caption{$y(n)$ from the definition of convolution}
+\label{fig:ynconv6}
 \end{figure}
 
+\item Compute $y(n)$ using DFT and FFT.
+
+Below code plots \figref{fig:dft__} $y(n)$ using DFT:
+\begin{lstlisting}
+https://github.com/Avyaaz13/Audio-Filtering/blob/main/Audio%20Filtering/codes/6.4_yndft.py
+\end{lstlisting}
+
+\begin{figure}[!ht]
+\centering
+\includegraphics[width=\columnwidth]{figs/6.2_dft.png}
+\caption{$y(n)$ obtained from DFT}
+\label{fig:dft__}
+\end{figure}
+
+Below code plots \figref{fig:fft__} $y(n)$ using FFT:
+\begin{lstlisting}
+https://github.com/Avyaaz13/Audio-Filtering/blob/main/Audio%20Filtering/codes/6.4_ynfft.py
+\end{lstlisting}
+\begin{figure}[!ht]
+\centering
+\includegraphics[width=\columnwidth]{figs/6.2_fft.png}
+\caption{$y(n)$ obtained from FFT}
+\label{fig:fft__}
+\end{figure}
 \item What is the sampling frequency of the input signal?\\
 \solution The Sampling Frequency is 44.1KHz
 \item
