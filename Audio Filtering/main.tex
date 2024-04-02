@@ -362,11 +362,11 @@ https://github.com/Avyaaz13/Audio-Filtering/blob/main/Audio%20Filtering/codes/4.
 
 \item Compute 
 \begin{equation}
-\label{eq:convolve}
+\label{eq:convolve_}
 y(n) = x(n)*h(n) = \sum_{n=-\infty}^{\infty}x(k)h(n-k)
 \end{equation}
 
-Comment. The operation in \eqref{eq:convolve} is known as
+Comment. The operation in \eqref{eq:convolve_} is known as
 {\em convolution}.
 %
 \\
@@ -381,7 +381,7 @@ https://github.com/Avyaaz13/Audio-Filtering/blob/main/Audio%20Filtering/codes/4.
 \centering
 \includegraphics[width=\columnwidth]{figs/y_by_conv.png}
 \caption{$y(n)$ from the definition of convolution}
-\label{fig:ynconv}
+\label{fig:ynconv_1}
 \end{figure}
 
 \item Show that
@@ -502,6 +502,13 @@ where the input signal is $x(n)$ and the output signal is $y(n)$ with initial va
 \begin{lstlisting}
 https://github.com/Avyaaz13/Audio-Filtering/blob/main/Audio%20Filtering/codes/6.1_filtfilt.py
 \end{lstlisting}
+\begin{figure}[!ht]
+\centering
+\includegraphics[width=1.2\columnwidth]{figs/xn_custom.png}
+\caption{$x(n)$ vs $n$}
+\label{fig:x(n) vs n}
+\end{figure}
+
 \begin{figure}[!ht]
 \centering
 \includegraphics[width=1.2\columnwidth]{figs/Figure_1.png}
@@ -646,7 +653,7 @@ https://github.com/Avyaaz13/Audio-Filtering/blob/main/Audio%20Filtering/codes/6.
 
 \item Compute $y(n)$ using DFT and FFT.
 
-Below code plots \figref{fig:dft__} $y(n)$ using DFT:
+Below code plots \figref{fig:dft__fft} $y(n)$ using DFT:
 \begin{lstlisting}
 https://github.com/Avyaaz13/Audio-Filtering/blob/main/Audio%20Filtering/codes/6.4_yndft.py
 \end{lstlisting}
@@ -654,19 +661,8 @@ https://github.com/Avyaaz13/Audio-Filtering/blob/main/Audio%20Filtering/codes/6.
 \begin{figure}[!ht]
 \centering
 \includegraphics[width=\columnwidth]{figs/6.2_dft.png}
-\caption{$y(n)$ obtained from DFT}
-\label{fig:dft__}
-\end{figure}
-
-Below code plots \figref{fig:fft__} $y(n)$ using FFT:
-\begin{lstlisting}
-https://github.com/Avyaaz13/Audio-Filtering/blob/main/Audio%20Filtering/codes/6.4_ynfft.py
-\end{lstlisting}
-\begin{figure}[!ht]
-\centering
-\includegraphics[width=\columnwidth]{figs/6.2_fft.png}
-\caption{$y(n)$ obtained from FFT}
-\label{fig:fft__}
+\caption{$y(n)$ obtained from DFT \& FFT }
+\label{fig:dft__fft}
 \end{figure}
 \item What is the sampling frequency of the input signal?\\
 \solution The Sampling Frequency is 44.1KHz

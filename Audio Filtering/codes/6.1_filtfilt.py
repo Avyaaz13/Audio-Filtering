@@ -85,4 +85,12 @@ plt.stem(output_signal_custom[range_of_interest], linefmt='b', markerfmt='ro', b
 plt.legend()
 plt.grid(True)
 plt.show()
+plt.clf()
+
+plt.stem(x[range_of_interest], linefmt='c', markerfmt='ro', basefmt='k', label='x(n):Input audio')
+plt.xlabel('$n$')
+plt.ylabel('$x(n)$')
+plt.legend()
+plt.grid(True)
+plt.show()
 

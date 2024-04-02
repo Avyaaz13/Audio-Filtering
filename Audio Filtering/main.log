@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2024.3.26)  1 APR 2024 13:17
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2024.3.26)  2 APR 2024 23:01
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1198,17 +1198,14 @@ LaTeX Font Info:    Trying to load font information for OT1+txr on input line 6
 
 (/usr/share/texlive/texmf-dist/tex/latex/txfonts/ot1txr.fd
 File: ot1txr.fd 2000/12/15 v3.1
-) (./main.aux
-
-LaTeX Warning: Label `eq:convolve' multiply defined.
-
-)
+) (./main.aux)
 \openout1 = `main.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/txmi/m/it on input line 63.
 LaTeX Font Info:    Trying to load font information for OML+txmi on input line 
 63.
- (/usr/share/texlive/texmf-dist/tex/latex/txfonts/omltxmi.fd
+
+(/usr/share/texlive/texmf-dist/tex/latex/txfonts/omltxmi.fd
 File: omltxmi.fd 2000/12/15 v3.1
 )
 LaTeX Font Info:    ... okay on input line 63.
@@ -1417,7 +1414,10 @@ File: figs/hndef.png Graphic file (type png)
 <use figs/hndef.png>
 Package pdftex.def Info: figs/hndef.png  used on input line 358.
 (pdftex.def)             Requested size: 252.0pt x 189.00427pt.
-<figs/y_by_conv.png, id=178, 462.528pt x 346.896pt>
+
+LaTeX Warning: Reference `fig:ynconv' on page 4 undefined on input line 373.
+
+<figs/y_by_conv.png, id=177, 462.528pt x 346.896pt>
 File: figs/y_by_conv.png Graphic file (type png)
 <use figs/y_by_conv.png>
 Package pdftex.def Info: figs/y_by_conv.png  used on input line 382.
@@ -1432,18 +1432,18 @@ LaTeX Warning: Command \j invalid in math mode on input line 405.
 
 LaTeX Warning: Command \j invalid in math mode on input line 415.
 
-<figs/yn_DFT.png, id=208, 462.528pt x 346.896pt>
+<figs/yn_DFT.png, id=206, 462.528pt x 346.896pt>
 File: figs/yn_DFT.png Graphic file (type png)
 <use figs/yn_DFT.png>
 Package pdftex.def Info: figs/yn_DFT.png  used on input line 425.
 (pdftex.def)             Requested size: 252.0pt x 189.00427pt.
-<figs/yn_FFT.png, id=209, 462.528pt x 346.896pt>
+<figs/yn_FFT.png, id=207, 462.528pt x 346.896pt>
 File: figs/yn_FFT.png Graphic file (type png)
 <use figs/yn_FFT.png>
 Package pdftex.def Info: figs/yn_FFT.png  used on input line 435.
 (pdftex.def)             Requested size: 252.0pt x 189.00427pt.
 [5 <./figs/y_by_conv.png> <./figs/yn_DFT.png> <./figs/yn_FFT.png>]
-<figs/matrix.png, id=236, 462.528pt x 346.896pt>
+<figs/matrix.png, id=235, 462.528pt x 346.896pt>
 File: figs/matrix.png Graphic file (type png)
 <use figs/matrix.png>
 Package pdftex.def Info: figs/matrix.png  used on input line 479.
@@ -1481,58 +1481,69 @@ Underfull \hbox (badness 10000) in paragraph at lines 495--499
 
  []
 
-<figs/Figure_1.png, id=239, 987.2082pt x 478.4274pt>
-File: figs/Figure_1.png Graphic file (type png)
-<use figs/Figure_1.png>
-Package pdftex.def Info: figs/Figure_1.png  used on input line 507.
+<figs/xn_custom.png, id=238, 987.2082pt x 478.4274pt>
+File: figs/xn_custom.png Graphic file (type png)
+<use figs/xn_custom.png>
+Package pdftex.def Info: figs/xn_custom.png  used on input line 507.
 (pdftex.def)             Requested size: 302.39923pt x 146.5516pt.
 
 Overfull \hbox (50.39923pt too wide) in paragraph at lines 507--508
  [][] 
  []
 
-<figs/lfilt.png, id=240, 987.2082pt x 478.4274pt>
-File: figs/lfilt.png Graphic file (type png)
-<use figs/lfilt.png>
-Package pdftex.def Info: figs/lfilt.png  used on input line 519.
+<figs/Figure_1.png, id=239, 987.2082pt x 478.4274pt>
+File: figs/Figure_1.png Graphic file (type png)
+<use figs/Figure_1.png>
+Package pdftex.def Info: figs/Figure_1.png  used on input line 514.
 (pdftex.def)             Requested size: 302.39923pt x 146.5516pt.
 
-Overfull \hbox (50.39923pt too wide) in paragraph at lines 519--520
+Overfull \hbox (50.39923pt too wide) in paragraph at lines 514--515
+ [][] 
+ []
+
+[6 <./figs/matrix.png> <./figs/xn_custom.png> <./figs/Figure_1.png>]
+<figs/lfilt.png, id=263, 987.2082pt x 478.4274pt>
+File: figs/lfilt.png Graphic file (type png)
+<use figs/lfilt.png>
+Package pdftex.def Info: figs/lfilt.png  used on input line 526.
+(pdftex.def)             Requested size: 302.39923pt x 146.5516pt.
+
+Overfull \hbox (50.39923pt too wide) in paragraph at lines 526--527
  [][] 
  []
 
 
-Overfull \hbox (34.53061pt too wide) detected at line 534
+Overfull \hbox (34.53061pt too wide) detected at line 541
 []
  []
 
 
-Overfull \hbox (6.75394pt too wide) detected at line 543
+Overfull \hbox (6.75394pt too wide) detected at line 550
 []
  []
 
-[6 <./figs/matrix.png> <./figs/Figure_1.png>]
-Overfull \hbox (6.91942pt too wide) detected at line 556
+
+Overfull \hbox (6.91942pt too wide) detected at line 563
 []
  []
 
-<figs/Filter_Response.png, id=271, 462.528pt x 346.896pt>
+<figs/Filter_Response.png, id=268, 462.528pt x 346.896pt>
 File: figs/Filter_Response.png Graphic file (type png)
 <use figs/Filter_Response.png>
-Package pdftex.def Info: figs/Filter_Response.png  used on input line 564.
+Package pdftex.def Info: figs/Filter_Response.png  used on input line 571.
 (pdftex.def)             Requested size: 252.0pt x 189.00427pt.
-<figs/pole_zero.png, id=273, 462.528pt x 346.896pt>
+<figs/pole_zero.png, id=270, 462.528pt x 346.896pt>
 File: figs/pole_zero.png Graphic file (type png)
 <use figs/pole_zero.png>
-Package pdftex.def Info: figs/pole_zero.png  used on input line 575.
+Package pdftex.def Info: figs/pole_zero.png  used on input line 582.
 (pdftex.def)             Requested size: 252.0pt x 189.00427pt.
 
-Overfull \hbox (19.28506pt too wide) detected at line 587
+Overfull \hbox (19.28506pt too wide) detected at line 594
 []
  []
 
-
-Overfull \hbox (6.53441pt too wide) detected at line 598
+[7 <./figs/lfilt.png> <./figs/Filter_Response.png> <./figs/pole_zero.png>]
+Overfull \hbox (6.53441pt too wide) detected at line 605
  []$[]  \OML/txmi/m/it/12 h\OT1/txr/m/n/12 (\OML/txmi/m/it/12 n\OT1/txr/m/n/12 
 ) = 0\OML/txmi/m/it/12 :\OT1/txr/m/n/12 014\OML/txmi/m/it/12 ^^N\OT1/txr/m/n/12
  (\OML/txmi/m/it/12 n\OT1/txr/m/n/12 )  +  0\OML/txmi/m/it/12 :\OT1/txr/m/n/12 
@@ -1543,7 +1554,7 @@ Overfull \hbox (6.53441pt too wide) detected at line 598
  []
 
 
-Overfull \hbox (21.13979pt too wide) detected at line 598
+Overfull \hbox (21.13979pt too wide) detected at line 605
  []$[] \OT1/txr/m/n/12 +  0\OML/txmi/m/it/12 :\OT1/txr/m/n/12 215\OML/txmi/m/it
 /12 ^^N\OT1/txr/m/n/12 (\OML/txmi/m/it/12 n \OMS/txsy/m/n/12 ^^@ \OT1/txr/m/n/1
 2 3)  +  0\OML/txmi/m/it/12 :\OT1/txr/m/n/12 226\OML/txmi/m/it/12 ^^N\OT1/txr/m
@@ -1553,53 +1564,48 @@ m/it/12 n \OMS/txsy/m/n/12 ^^@ \OT1/txr/m/n/12 5) + \OML/txmi/m/it/12 ::::::$ [
 ]  
  []
 
-<figs/h(n)_custom.png, id=276, 462.528pt x 346.896pt>
+<figs/h(n)_custom.png, id=296, 462.528pt x 346.896pt>
 File: figs/h(n)_custom.png Graphic file (type png)
 <use figs/h(n)_custom.png>
-Package pdftex.def Info: figs/h(n)_custom.png  used on input line 613.
+Package pdftex.def Info: figs/h(n)_custom.png  used on input line 620.
 (pdftex.def)             Requested size: 252.0pt x 189.00427pt.
-[7 <./figs/lfilt.png> <./figs/Filter_Response.png> <./figs/pole_zero.png>]
-Underfull \hbox (badness 1997) in paragraph at lines 622--624
+
+Underfull \hbox (badness 1997) in paragraph at lines 629--631
 \OT1/txr/m/n/12 As both $\OML/txmi/m/it/12 a []$ \OT1/txr/m/n/12 and $\OML/txmi
 /m/it/12 b []$ \OT1/txr/m/n/12 are fi-nite length
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 622--624
+Underfull \hbox (badness 10000) in paragraph at lines 629--631
 
  []
 
-<figs/6.2_yncon.png, id=301, 987.2082pt x 478.4274pt>
+<figs/6.2_yncon.png, id=300, 987.2082pt x 478.4274pt>
 File: figs/6.2_yncon.png Graphic file (type png)
 <use figs/6.2_yncon.png>
-Package pdftex.def Info: figs/6.2_yncon.png  used on input line 642.
+Package pdftex.def Info: figs/6.2_yncon.png  used on input line 649.
 (pdftex.def)             Requested size: 252.0pt x 122.12512pt.
-<figs/6.2_dft.png, id=303, 987.2082pt x 478.4274pt>
+<figs/6.2_dft.png, id=302, 987.2082pt x 478.4274pt>
 File: figs/6.2_dft.png Graphic file (type png)
 <use figs/6.2_dft.png>
-Package pdftex.def Info: figs/6.2_dft.png  used on input line 656.
+Package pdftex.def Info: figs/6.2_dft.png  used on input line 663.
 (pdftex.def)             Requested size: 252.0pt x 122.12512pt.
-<figs/6.2_fft.png, id=305, 987.2082pt x 478.4274pt>
-File: figs/6.2_fft.png Graphic file (type png)
-<use figs/6.2_fft.png>
-Package pdftex.def Info: figs/6.2_fft.png  used on input line 667.
-(pdftex.def)             Requested size: 252.0pt x 122.12512pt.
-[8 <./figs/h(n)_custom.png> <./figs/6.2_yncon.png> <./figs/6.2_dft.png> <./figs
-/6.2_fft.png>] (./main.aux)
+[8 <./figs/h(n)_custom.png> <./figs/6.2_yncon.png> <./figs/6.2_dft.png>]
+(./main.aux)
 
-LaTeX Warning: There were multiply-defined labels.
+LaTeX Warning: There were undefined references.
 
 Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: C50489AC4B237CCA6623115DF81D02F2;673.
  ) 
 Here is how much of TeX's memory you used:
- 45257 strings out of 478287
- 1035435 string characters out of 5849289
+ 45256 strings out of 478287
+ 1035444 string characters out of 5849289
  1895057 words of memory out of 5000000
- 62526 multiletter control sequences out of 15000+600000
+ 62527 multiletter control sequences out of 15000+600000
  531854 words of font info for 151 fonts, out of 8000000 for 9000
  1144 hyphenation exceptions out of 8191
- 115i,17n,118p,424b,1661s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 115i,17n,118p,424b,1671s stack positions out of 5000i,500n,10000p,200000b,80000s
 pdfTeX warning (dest): name{lstnumber.-2.23} has been referenced but does not
  exist, replaced by a fixed one
 
@@ -1614,10 +1620,10 @@ xmf-dist/fonts/type1/public/txfonts/txsy.pfb></usr/share/texlive/texmf-dist/fon
 ts/type1/public/txfonts/txsya.pfb></usr/share/texlive/texmf-dist/fonts/type1/ur
 w/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.
 pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on main.pdf (8 pages, 548424 bytes).
+Output written on main.pdf (8 pages, 555690 bytes).
 PDF statistics:
- 424 PDF objects out of 1000 (max. 8388607)
- 351 compressed objects within 4 object streams
- 184 named destinations out of 1000 (max. 500000)
+ 420 PDF objects out of 1000 (max. 8388607)
+ 347 compressed objects within 4 object streams
+ 182 named destinations out of 1000 (max. 500000)
  151 words of extra memory for PDF output out of 10000 (max. 10000000)
 
