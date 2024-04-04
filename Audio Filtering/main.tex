@@ -247,7 +247,7 @@ Let
 	H\brak{e^{j \omega}} = H\brak{z = e^{j \omega}}.
 \end{equation}
 Plot $\abs{H\brak{e^{j \omega}}}$.  Comment.  $H(e^{j \omega})$ is
-known as the {\em Discrete Time Fourier Transform} (DTFT) of $x(n)$.
+known as the {\em Discrete Time Fourier Transform} (DTFT) of $h(n)$.
 \\
 \solution Below is the code which plots the magnitude of Transfer Function:
 \begin{lstlisting}
@@ -332,7 +332,7 @@ For large $n$
     u\brak{n}=u\brak{n-2}=1
 \end{align}
 \begin{align}
-  \lim_{n \to \infty}  \brak{\frac{h(n + 1)}{h(n)}} = 1/2 <1
+  \lim_{n \to \infty}  \brak{\frac{h(n + 1)}{h(n)}} = \frac{1}{2} <1
 \end{align}
 Hence it is stable.
 \item 
@@ -363,14 +363,14 @@ https://github.com/Avyaaz13/Audio-Filtering/blob/main/Audio%20Filtering/codes/4.
 \item Compute 
 \begin{equation}
 \label{eq:convolve_}
-y(n) = x(n)*h(n) = \sum_{n=-\infty}^{\infty}x(k)h(n-k)
+y(n) = x(n)*h(n) = \sum_{k=-\infty}^{\infty}x(k)h(n-k)
 \end{equation}
 
 Comment. The operation in \eqref{eq:convolve_} is known as
 {\em convolution}.
 %
 \\
-\solution Below code plots \figref{fig:ynconv} which is same as 
+\solution Below code plots \figref{fig:ynconv_1} which is same as 
 $y(n)$ in
 \figref{fig:xnyn_graph}. 
 
@@ -386,7 +386,7 @@ https://github.com/Avyaaz13/Audio-Filtering/blob/main/Audio%20Filtering/codes/4.
 
 \item Show that
 \begin{equation}
-y(n) =  \sum_{n=-\infty}^{\infty}x(n-k)h(k)
+y(n) =  \sum_{k=-\infty}^{\infty}x(n-k)h(k)
 \end{equation}
 \solution
 In \eqref{eq:convolve}, we substitute $k = n - k$ to get
@@ -598,7 +598,9 @@ Now,
     \delta\brak{n-k} \system{Z} z^{-k}\label{eq:res-1}
 \end{align}
 Let us assume that a causal sequence is to be obtained using \textbf{Long Division Method:}
-
+\begin{multline}
+H(z) = 0.014z \,+\, 0.069z^{-1}\, +\, 0.153z^{-2} \\ + \,0.215z^{-3} \,+ \, 0.226z^{-4} \,+\, 0.192z^{-5} + ......
+\end{multline}
 Taking inverse z transform of \eqref{eq:trans-func} by using \eqref{eq:res-1}:
 \begin{multline}
 h(n) = 0.014\delta(n) \,+\, 0.069 \delta(n - 1)\, +\, 0.153\delta(n - 2) \\ + \,0.215\delta(n - 3) \,+ \, 0.226\delta(n - 4) \,+\, 0.192 \delta(n - 5) + ......
@@ -632,7 +634,7 @@ As both $a\brak{k}$ and $b\brak{k}$ are finite length sequences they converge.\\
 \item Compute 
 \begin{equation}
 \label{eq:convolve}
-y(n) = x(n)*h(n) = \sum_{n=-\infty}^{\infty}x(k)h(n-k)
+y(n) = x(n)*h(n) = \sum_{k=-\infty}^{\infty}x(k)h(n-k)
 \end{equation}
 
 Comment. The operation in \eqref{eq:convolve} is known as
