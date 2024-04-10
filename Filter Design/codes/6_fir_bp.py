@@ -40,7 +40,7 @@ A = -20 * np.log10(delta)
 N = np.ceil((A - 8) / (4.57 * delomega))
 N = 100  # Adjust N if needed
 n = np.arange(-N, N + 1)
-hlp = np.sin(n * omega_l) / np.where(n != 0, n * np.pi, 1)
+hlp = np.sin(n * omega_l)/ np.where(n != 0, n * np.pi, 1)
 hlp[N] = omega_l / np.pi
 
 # The Bandpass filter

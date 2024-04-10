@@ -112,7 +112,7 @@ The sampling rate for the filter has been specified as $F_s =  48$ kHz.	If the u
 \begin{enumerate}[label = \roman*)]
     \item \textit{Tolerances:} The passband ($\delta_1$) and stopband ($\delta_2$) tolerances are given to be equal, so we let $\delta_1 = \delta_2 = \delta = 0.15$.
     
-    \item \textit{Passband:} The passband of filter number $j$, $j$ going from 0 to 13 is from \{4 + 0.6$j$\}kHz to \{4 + 0.6$(j + 2)$\}kHz. Sine our filter number is 1, substituting $j = 1$ gives the passband range for our bandpass filter as $4.6$ kHz - $5.8$ kHz. Hence, the un-normalized discrete time filter passband frequencies are:
+    \item \textit{Passband:} The passband of filter number $j$, $j$ going from 0 to 13 is from \{4 + 0.6$j$\}kHz to \{4 + 0.6$(j + 2)$\}kHz. Since our filter number is 1, substituting $j = 1$ gives the passband range for our bandpass filter as $4.6$ kHz - $5.8$ kHz. Hence, the un-normalized discrete time filter passband frequencies are:
     \begin{align}
         F_{p_1} = 5.8 \text{ kHz}\\
         F_{p_2} = 4.6 \text{ kHz}
@@ -224,7 +224,7 @@ such that $H_{a,BP}(j\Omega_{p1}) = 1$, we obtain
 {\tiny
 \begin{align}
 \label{bpfinal}
-H_{a,BP}(s) &= \frac{2.0601\times 10^{-5}s^4}{s^8+0.0979s^7+0.5081s^6+0.0370s^5+0.0952s^4+0.0046s^3+0.0078s^2+0.002s+0.002}\\
+H_{a,BP}(s) &= \frac{2.0601\times 10^{-5}s^4}{s^8+0.0979s^7+0.5081s^6+0.0370s^5+0.0952s^4+0.0046s^3+0.0078s^2+0.0002s+0.0002}\\
 G_{BP} & = 2.0601\times 10^{-5}
 \end{align}
 }
@@ -235,21 +235,21 @@ match well with those obtained analytically through the bilinear transformation.
 
 \begin{figure}[!ht]
 \centering
-\includegraphics[width = \columnwidth]{figs/fig1.png}
+\includegraphics[width = \columnwidth]{Figur1.png}
 \caption{The Analog Low-Pass Frequency Response for $0.35 \leq \epsilon \leq 0.6$}
 \label{fig1}
 \end{figure}
 
 \begin{figure}[!ht]
 \centering
-\includegraphics[width =\columnwidth]{figs/fig2.png}
+\includegraphics[width =\columnwidth]{fig2.png}
 \caption{The magnitude response plots from the specifications in Equation \ref{lpsqfinal} and the design in Equation \ref{lpfinal}}
 \label{fig2}
 \end{figure}
 
 \begin{figure}[H]
 \label{fig3}
-\includegraphics[width = \columnwidth]{figs/fig3.png}
+\includegraphics[width = \columnwidth]{fig3.png}
 \caption{The analog bandpass magnitude response plot from Equation \ref{bpfinal}} 
 \end{figure}
 
@@ -282,7 +282,7 @@ find that the passband and stopband frequencies meet the specifications well eno
 \begin{figure}[H]
 \label{fig4}
 \centering
-\includegraphics[width = \columnwidth]{figs/fig4.png}
+\includegraphics[width = \columnwidth]{fig4.png}
 \caption{The magnitude response of the bandpass digital filter designed to meet the given specifications} 
 \end{figure}
 
@@ -368,12 +368,12 @@ The magnitude  response of the filter in (\ref{firlpfinal}) is shown in Figure 5
 
 \begin{figure}[H]
 \label{fig5}
-\includegraphics[width = \columnwidth]{figs/fig5.png}
+\includegraphics[width = \columnwidth]{fig5.png}
 \caption{The magnitude response of the FIR lowpass digital filter designed to meet the given specifications} 
 \end{figure}
 
 \subsection{The FIR Bandpass Filter}
-The centre of the passband of the desired bandpass filter was found to be $\omega_c = 0.275\pi$ in Section
+The centre of the passband of the desired bandpass filter was found to be $\omega_c = 0.2166\pi$ in Section
 2.1.  The impulse response of the desired bandpass filter is obtained from the impulse response of the
 corresponding lowpass filter as
 \begin{align}
@@ -384,15 +384,15 @@ Thus, from (\ref{firlpfinal}), we obtain
 h_{bp}(n) =
 \begin{cases}
 \label{firbpfinal}
-& \dfrac{2\sin(\frac{n\pi}{40}) \cos(\frac{11n\pi}{40})}{n\pi} \indent -100 \leq n \leq 100 \nonumber \\
+& \dfrac{2\sin(\frac{n\pi}{40}) \cos(\frac{13n\pi}{60})}{n\pi} \indent -100 \leq n \leq 100 \nonumber \\
 & 0, \hspace{3cm} \mbox{otherwise}
 \end{cases}
 \end{align}
 The magnitude response of the FIR bandpass filter designed to meet the given specifications is plotted in Figure 6.
 \begin{figure}[H]
 \label{fig6}
-\includegraphics[width = \columnwidth]{figs/fig6.png}
+\includegraphics[width = \columnwidth]{fig6.png}
 \caption{The magnitude response of the FIR bandpass digital filter designed to meet the given specifications} 
 \end{figure}
 
-\end{document}c
+\end{document}
