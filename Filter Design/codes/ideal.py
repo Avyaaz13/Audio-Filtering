@@ -34,18 +34,17 @@ omega_l = (omega_p1 - omega_p2) / 2
 omega_s1 = const * F_s1
 omega_s2 = const * F_s2
 delomega = 2 * np.pi * delF / Fs
+N = 100000  # To make it ideal
+n = np.arange(-N, N + 1)
+hlp = np.sin(n * omega_l) / (n * np.pi)
+hlp[N] = omega_l / np.pi
 
-N = 100  # Adjust N if needed
-n = np.arange(-2*N, 2*(N + 1))
-hbp = 2*np.sin(n * omega_l)*np.cos(13*n*np.pi/60) / np.where(n != 0,(n * np.pi),1)
-hbp[2*N] = 1/ 40
-hbp = hbp * (np.abs(n) <= N)
 # The lowpass filter plot
-#omega = np.linspace(-np.pi / 2, np.pi / 2, 400)
-plt.stem(n, hbp,linefmt='b',markerfmt='ro',basefmt = 'k')
-plt.xlabel(r'$n$')
-plt.ylabel(r'$h_{bp}(n)$')
+omega = np.linspace(-np.pi / 2, np.pi / 2, 400)
+Hlp = np.abs(np.polyval(hlp, np.exp(-1j * omega)))
+plt.plot(omega / np.pi, Hlp,'b')
+plt.xlabel(r'$\omega/\pi$')
+plt.ylabel(r'$|H_{lp_{ideal}}|$')
 plt.grid()
-plt.savefig('hbp.png')
+plt.savefig('ideal frequency response plot.png')
 plt.show()
-

@@ -51,6 +51,8 @@
 \renewcommand\thesectiondis{\arabic{section}}
 \renewcommand\thesubsectiondis{\thesectiondis.\arabic{subsection}}
 \renewcommand\thesubsubsectiondis{\thesubsectiondis.\arabic{subsubsection}}
+\newcommand{\secref}[1]{Section~\ref{#1}}
+
 \lstset{
 language=Python,
 frame=single, 
@@ -100,7 +102,7 @@ columns=fullflexible
 We are supposed to design the equivalent FIR and IIR filter realizations for filter number 1. 
 The filter numbers are calculated using the below code:
 \begin{lstlisting}
-    wget avk
+    wget https://github.com/Avyaaz13/Audio-Filtering/blob/main/Filter%20Design/codes/0_FilterNum.py
 \end{lstlisting}
 This is a bandpass filter whose specifications are available below.
 
@@ -108,7 +110,7 @@ This is a bandpass filter whose specifications are available below.
 The sampling rate for the filter has been specified as $F_s =  48$ kHz.	If the un-normalized  discrete-time (natural) frequency is F, the corresponding normalized digital filter (angular) frequency is given by $\omega = 2\pi
 \left(\frac{F}{F_s}\right)$.
 
-\subsection{\textbf{The Digital Filter}}
+\subsection{\textbf{The Digital Filter}}\label{sec:dig_filt}
 \begin{enumerate}[label = \roman*)]
     \item \textit{Tolerances:} The passband ($\delta_1$) and stopband ($\delta_2$) tolerances are given to be equal, so we let $\delta_1 = \delta_2 = \delta = 0.15$.
     
@@ -163,7 +165,14 @@ the passband edge at $\Omega_{Lp} = 1$ and stopband edges at $\Omega_{Ls_1} = 1.
 \label{lpfirst}
 \vert H_{a,LP}(j\Omega_L)\vert^2 = \frac{1}{1 + \epsilon^2c_N^2(\Omega_L/\Omega_{Lp})}
 \end{equation}
-where $c_N(x) = \cosh(N \cosh^{-1}x)$ and the integer $N$, which is the order of the filter, and $\epsilon$ are design paramters.  Since $\Omega_{Lp} = 1$, (\ref{lpfirst}) may be rewritten as
+where,
+\begin{align}
+c_N(x) =
+    \begin{cases}
+   \cosh(N \cosh^{-1}x) & x > 1 \nonumber \\
+   \cos(N \cos^{-1}x) & 0 \leq x \leq 1 
+    \end{cases}
+\end{align} $N$ $\in$ $Z$ which is the order of the filter, and $\epsilon$ are design paramters.  Since $\Omega_{Lp} = 1$, (\ref{lpfirst}) may be rewritten as
 \begin{equation}
 \label{lpsecond}
 \vert H_{a,LP}(j\Omega_L)\vert^2 = \frac{1}{1 + \epsilon^2c_N^2(\Omega_L)}
@@ -182,7 +191,17 @@ we obtain:
     &D_1 = 0.3841\\
     &D_2 = 43.444
 \end{align}
-  In Figure 1, we plot $\vert H(j\Omega)\vert$ for a range of values of $\epsilon$, for $N = 4$. We find that for larger values of $\epsilon$, $|H(j\Omega)|$ decreases in the transition band.  We choose $\epsilon = 0.4$  for our IIR filter design.  
+Below is the code which plots the \figref{fig1}:
+\begin{lstlisting}
+    wget https://github.com/Avyaaz13/Audio-Filtering/blob/main/Filter%20Design/codes/1_epsilon.py
+\end{lstlisting}
+  In \figref{fig1}, we plot $\vert H(j\Omega)\vert$ for a range of values of $\epsilon$, for $N = 4$. We find that for larger values of $\epsilon$, $|H(j\Omega)|$ decreases in the transition band.  We choose $\epsilon = 0.4$  for our IIR filter design.  
+\begin{figure}[!ht]
+\centering
+\includegraphics[width = \columnwidth]{figs/fig1.png}
+\caption{The Analog Low-Pass Frequency Response for $0.35 \leq \epsilon \leq 0.6$}
+\label{fig1}
+\end{figure}
 
 %For this value of $epsilon$, the plot of $\vert H(j\Omega) \vert$ is shown for various $4 \leq N \leq 10$.  For increasing values of $N$, we find that that fall from the passband to the stopband is sharp.  For $N = 6$, we find that $\vert H(j\Omega_{Ls}) \vert$ is very close to $\delta$, thus meeting the constraints imposed on the magnitude response of the filter.  Based on the above discussion, we choose $N = 6, \epsilon = 0.5$ as the design paramters for the equivalent lowpass Chebyschev approximation.  
 
@@ -195,7 +214,7 @@ where
 \begin{equation}
 c_4(x) = 8x^4 - 8x^2 + 1.	
 \end{equation}
-The poles of the frequency response in (\ref{lpfirst}) lying in the left half plane are in general obtained as 
+The poles of the frequency response in (\ref{lpfirst}) are general obtained as 
 $r_1\cos\phi_k + jr_2\sin \phi_k$, where
 \begin{eqnarray}
 \label{lppoles}
@@ -212,8 +231,30 @@ Substituting $N = 4$, $\epsilon = 0.4$ and $H_{a,LP}(j) = \frac{1}{\sqrt{1+\epsi
 \label{lpfinal}
 H_{a,LP}(s_L) = \frac{0.3125}{s_L^4 + 1.1068s_L^3 + 1.6125s_L^2+0.9140s_L + 0.3366}
 \end{equation}
-
+Below is the code which plots the \figref{fig2}:
+\begin{lstlisting}
+   wget https://github.com/Avyaaz13/Audio-Filtering/blob/main/Filter%20Design/codes/2_design.py
+\end{lstlisting}
 In \figref{fig2} we plot $|H(j\Omega)|$ using (\ref{lpsqfinal}) and (\ref{lpfinal}), thereby verifying that our low-pass Chebyschev filter design meets the specifications.
+
+\begin{figure}[!ht]
+\centering
+\includegraphics[width =\columnwidth]{figs/fig2.png}
+\caption{The magnitude response plots from the specifications in Equation \ref{lpsqfinal} and the design in Equation \ref{lpfinal}}
+\label{fig2}
+\end{figure}
+
+Below is the code of pole-zero plot of the \eqref{lpsqfinal}:
+
+\begin{lstlisting}
+    wget https://github.com/Avyaaz13/Audio-Filtering/blob/main/Filter%20Design/codes/pole-zero.py
+\end{lstlisting}
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width = \columnwidth]{figs/pole_zero.png}
+    \caption{Pole-Zero plot of $H_{a,LP}(j\Omega_L)$}
+    \label{fig:enter-label}
+\end{figure}
 \item {\em The Band Pass Chebyschev Filter:}  The analog bandpass filter is obtained from (\ref{lpfinal}) by substituting
 $s_L = \frac{s^2 + \Omega_0^2}{Bs}$.  Hence
 \begin{equation}
@@ -228,29 +269,20 @@ H_{a,BP}(s) &= \frac{2.0601\times 10^{-5}s^4}{s^8+0.0979s^7+0.5081s^6+0.0370s^5+
 G_{BP} & = 2.0601\times 10^{-5}
 \end{align}
 }
-In Figure 3, we plot $\vert H_{a,BP}(j\Omega)\vert$ as a function of $\Omega$ for both positve as
+Below is the code which plots the \figref{fig3}:
+\begin{lstlisting}
+    wget https://github.com/Avyaaz13/Audio-Filtering/blob/main/Filter%20Design/codes/3_iir_l.py
+\end{lstlisting}
+In \figref{fig3}, we plot $\vert H_{a,BP}(j\Omega)\vert$ as a function of $\Omega$ for both positve as
 well as negative frequencies.  We find that the passband and stopband frequencies in the figure
 match well with those obtained analytically through the bilinear transformation.
 \end{enumerate}
 
-\begin{figure}[!ht]
-\centering
-\includegraphics[width = \columnwidth]{Figur1.png}
-\caption{The Analog Low-Pass Frequency Response for $0.35 \leq \epsilon \leq 0.6$}
-\label{fig1}
-\end{figure}
 
 \begin{figure}[!ht]
-\centering
-\includegraphics[width =\columnwidth]{fig2.png}
-\caption{The magnitude response plots from the specifications in Equation \ref{lpsqfinal} and the design in Equation \ref{lpfinal}}
-\label{fig2}
-\end{figure}
-
-\begin{figure}[H]
-\label{fig3}
-\includegraphics[width = \columnwidth]{fig3.png}
+\includegraphics[width = \columnwidth]{figs/fig3.png}
 \caption{The analog bandpass magnitude response plot from Equation \ref{bpfinal}} 
+\label{fig3}
 \end{figure}
 
 \subsection{The Digital Filter}
@@ -276,14 +308,20 @@ D(z) = 1.7511  -10.6506z^{-1} + 30.9794z^{-2}  -55.1588z^{-3}+  65.4285z^{-4}\no
   -52.8121z^{-5}+   28.3995z^{-6}  -9.3484z^{-7} +   1.4717z^{-8}
 \end{eqnarray}
 }
-The plot of $|H_{d,BP}(z)|$ with respect to the normalized angular frequency (normalizing factor $\pi$) is available in Figure 4.  Again we
+The plot of $|H_{d,BP}(z)|$ with respect to the normalized angular frequency (normalizing factor $\pi$) is available in \figref{fig4}.  Again we
 find that the passband and stopband frequencies meet the specifications well enough.
 
-\begin{figure}[H]
-\label{fig4}
+
+Below is the code which plots the \figref{fig4}:
+\begin{lstlisting}
+   wget https://github.com/Avyaaz13/Audio-Filtering/blob/main/Filter%20Design/codes/4_iir_d.py
+\end{lstlisting}
+
+\begin{figure}[!ht]
 \centering
-\includegraphics[width = \columnwidth]{fig4.png}
+\includegraphics[width = \columnwidth]{figs/fig4.png}
 \caption{The magnitude response of the bandpass digital filter designed to meet the given specifications} 
+\label{fig4}
 \end{figure}
 
 
@@ -301,7 +339,7 @@ The stopband tolerance is $\delta$.
     \omega_l = \frac{\omega_{p1} - \omega_{p2}}{2}
 \end{align}
 
- Substituting the values of $\omega_{p1}$ and $\omega_{p2}$ from section 2.1, we obtain $\omega_l = 0.025\pi$.
+ Substituting the values of $\omega_{p1}$ and $\omega_{p2}$ from \secref{sec:dig_filt} , we obtain $\omega_l = 0.025\pi$.
 
 \item {\em The impulse response $h_{lp}(n)$} of the desired lowpass filter with cutoff frequency $\omega_l$
 is given by
@@ -310,8 +348,25 @@ is given by
 h_l(n) = \frac{\sin(n\omega_l)}{n\pi}w(n),
 \end{eqnarray}
 where $w(n)$ is the Kaiser window obtained from the design specifications.
-\end{enumerate}
 
+\item The impulse response of ideal Low Pass Filter is given by :
+\begin{align}
+    h\brak{n} = 
+\begin{cases} 
+    \frac{\sin(w_l n)}{n\pi}, &  n \neq 0 \\
+    \frac{w_l}{\pi}, &  n = 0
+\end{cases} \label{eq:h(n)_for_LPF}
+\end{align}
+From \eqref{eq:h(n)_for_LPF} we conclude that $h\brak{n}$ for an ideal Low Pass Filter is not causal and can neither be made causal by introducing a finite delay. And $h\brak{n}$ do not converge and hence the system is unstable.
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width = \columnwidth]{figs/ideal frequency response plot.png}
+    \caption{Frequency plot of the ideal low pass filter}
+    \label{fig:ideal lpfilter}
+\end{figure}
+
+
+\end{enumerate}
 \subsection{The Kaiser Window}
 The Kaiser window is defined as
 \begin{align}
@@ -325,7 +380,7 @@ w(n) =
 \end{align}
 where $I_0(x)$ is the modified Bessel function of the first kind of order zero in $x$ and $\beta$
 and $N$ are the window shaping factors.  In the following,
-we find $\beta$ and $N$ using the design parameters in section 2.1.
+we find $\beta$ and $N$ using the design parameters in \ref{sec:dig_filt}
 
 \begin{enumerate}
 \item  N is chosen according to
@@ -364,17 +419,29 @@ h_{lp}(n) =
 & 0, \hspace{2cm} \mbox{otherwise}
 \end{cases}
 \end{align}
-The magnitude  response of the filter in (\ref{firlpfinal}) is shown in Figure 5.
-
-\begin{figure}[H]
-\label{fig5}
-\includegraphics[width = \columnwidth]{fig5.png}
+Below is the code which plots \figref{hn_lp}:
+\begin{lstlisting}
+    wget https://github.com/Avyaaz13/Audio-Filtering/blob/main/Filter%20Design/codes/hlp.py
+\end{lstlisting}
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width = \columnwidth]{figs/h(n).png}
+    \caption{Impulse response of low pass FIR filter}
+    \label{hn_lp}
+\end{figure}
+Below is the code which plots \figref{fig5}:
+\begin{lstlisting}
+   wget https://github.com/Avyaaz13/Audio-Filtering/blob/main/Filter%20Design/codes/5_fir_lp.py
+\end{lstlisting}
+The magniude  response of the filter in (\ref{firlpfinal}) is shown in \figref{fig5}.
+\begin{figure}[!ht]
+\includegraphics[width = \columnwidth]{figs/fig5.png}
 \caption{The magnitude response of the FIR lowpass digital filter designed to meet the given specifications} 
+\label{fig5}
 \end{figure}
 
 \subsection{The FIR Bandpass Filter}
-The centre of the passband of the desired bandpass filter was found to be $\omega_c = 0.2166\pi$ in Section
-2.1.  The impulse response of the desired bandpass filter is obtained from the impulse response of the
+The centre of the passband of the desired bandpass filter was found to be $\omega_c = 0.2166\pi$ in \secref{sec:dig_filt}.  The impulse response of the desired bandpass filter is obtained from the impulse response of the
 corresponding lowpass filter as
 \begin{align}
 h_{bp}(n) = 2h_{lp}(n)cos(n\omega_c)
@@ -388,11 +455,25 @@ h_{bp}(n) =
 & 0, \hspace{3cm} \mbox{otherwise}
 \end{cases}
 \end{align}
-The magnitude response of the FIR bandpass filter designed to meet the given specifications is plotted in Figure 6.
-\begin{figure}[H]
-\label{fig6}
-\includegraphics[width = \columnwidth]{fig6.png}
+Below is the code which plots \figref{hbp}:
+\begin{lstlisting}
+    wget https://github.com/Avyaaz13/Audio-Filtering/blob/main/Filter%20Design/codes/hbp.py
+\end{lstlisting}
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width = \columnwidth]{figs/hbp.png}
+    \caption{Impulse response of BandPass FIR filter}
+    \label{hbp}
+\end{figure}
+Below is the code which plots \figref{fig6}:
+\begin{lstlisting}
+    wget https://github.com/Avyaaz13/Audio-Filtering/blob/main/Filter%20Design/codes/6_fir_bp.py
+\end{lstlisting}
+The magnitude response of the FIR bandpass filter designed to meet the given specifications is plotted in \figref{fig6}.
+\begin{figure}[!ht]
+\includegraphics[width = \columnwidth]{figs/fig6.png}
 \caption{The magnitude response of the FIR bandpass digital filter designed to meet the given specifications} 
+\label{fig6}
 \end{figure}
 
 \end{document}

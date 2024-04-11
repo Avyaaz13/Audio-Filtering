@@ -114,9 +114,7 @@ Omega_L = np.arange(-2, 2.01, 0.01)
 H_analog_lp = G_lp * np.abs(1 / np.polyval(p, 1j * Omega_L))
 
 num, den, G_bp = lpbp(p, Omega_0, B, Omega_p2)
-print(num)
-print(den)
-print(G_bp)
+
 Omega = np.arange(-0.65, 0.651, 0.01)
 H_analog_bp = G_bp * np.abs(np.polyval(num, 1j * Omega) / np.polyval(den, 1j * Omega))
 
@@ -127,6 +125,7 @@ H_dig_bp = G * np.abs(np.polyval(dignum, np.exp(-1j * omega)) / np.polyval(digde
 plt.plot(omega / np.pi, H_dig_bp, 'm')
 plt.xlabel('$\\omega/\\pi$')
 plt.ylabel('$|H_{d,BP}(\\omega)|$')
+plt.grid()
 plt.savefig('fig4.png')
 plt.show()
 

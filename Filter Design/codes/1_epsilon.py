@@ -6,7 +6,7 @@ colors = ['b', 'g', 'r', 'm', 'c', 'purple', 'y']
 for N in range(4, 5):  # N = 4
     for i, epsilon in enumerate(np.arange(0.35, 0.64, 0.05)):
         Omega = np.arange(0, 3.02, 0.02)
-        H = 1 / np.sqrt(1 + epsilon**2 *((8*(Omega**4) - 8*(Omega**2) + 1))**2)
+        H = np.where(Omega < 1, 1 / np.sqrt(1 + epsilon**2 * (np.cos(N * np.arccos(Omega)))**2), 1 / np.sqrt(1 + epsilon**2 * (np.cosh(N * np.arccosh(Omega)))**2))
         ax.plot(Omega, H, color=colors[i], label=f'$\\epsilon = {epsilon:.2f}$')
 
 passband = (Omega >= 0) & (Omega <= 1)
@@ -21,6 +21,6 @@ plt.xlabel(r'$\Omega$')
 plt.ylabel(r'$|H_{a,LP}(j\Omega)|$')
 # plt.text(1.25, 0.45, r'$\epsilon = 0.35$')
 # plt.text(1.0, 0.3, r'$\epsilon = 0.6$')
+plt.legend()
 plt.savefig('fig1.png')
-plt.legend(loc='best')
 plt.show()

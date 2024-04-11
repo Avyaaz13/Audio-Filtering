@@ -47,7 +47,7 @@ hlp[N] = omega_l / np.pi
 hbp = 2 * hlp * np.cos(n * omega_c)
 
 # The lowpass filter plot
-omega = np.linspace(-np.pi / 2, np.pi / 2, 400)
+omega = np.linspace(-*np.pi/2 , np.pi / 2, 400)
 Hlp = np.abs(np.polyval(hlp, np.exp(-1j * omega)))
 plt.plot(omega / np.pi, Hlp,'b')
 plt.xlabel(r'$\omega/\pi$')
