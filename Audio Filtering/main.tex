@@ -167,17 +167,21 @@ and find
 \end{equation}
 \solution From \eqref{eq:z_trans},
 \begin{align}
-{\mathcal {Z}}\{x(n-1)\} &=\sum _{n=-\infty }^{\infty }x(n-1)z^{-n}
-\\
-&=\sum _{n=-\infty }^{\infty }x(n)z^{-n-1} = z^{-1}\sum _{n=-\infty }^{\infty }x(n)z^{-n}
+{\mathcal {Z}}\{x(n-1)\} &=\sum _{n=-\infty }^{\infty }x(n-1)z^{-n}\\
+n &\longrightarrow n+1\\ \nonumber
+&=\sum _{n=-\infty }^{\infty }x(n)z^{-n-1} \\
+&= z^{-1}\sum _{n=-\infty }^{\infty }x(n)z^{-n}\\
+&= z^{-1}X(z)
 \end{align}
 resulting in \eqref{eq:shift1}. Similarly, it can be shown that
 %
-\begin{equation}
-\label{eq:z_trans_shift}
-	{\mathcal {Z}}\{x(n-k)\} = z^{-k}X(z)
-\end{equation}
-
+\begin{align}
+{\mathcal {Z}}\{x(n-k)\} &=\sum _{n=-\infty }^{\infty }x(n-k)z^{-n}\\
+n &\longrightarrow n+k \nonumber\\
+&=\sum _{n=-\infty }^{\infty }x(n)z^{-n-k} \\
+&= z^{-k}\sum _{n=-\infty }^{\infty }x(n)z^{-n}\\
+&= z^{-k}X(z) \label{eq:z_trans_shift}
+\end{align}
 \item Find
 %
 \begin{equation}
@@ -185,7 +189,7 @@ H(z) = \frac{Y(z)}{X(z)}
 \end{equation}
 from  \eqref{q:2.2} assuming that the $Z$-transform is a linear operation.
 \\
-\solution  Applying \eqref{eq:z_trans_shift} in \eqref{q:2.2},
+\solution  Using \eqref{eq:z_trans_shift} in \eqref{q:2.2},
 \begin{align}
 Y(z) + \frac{1}{2}z^{-1}Y(z) &= X(z)+z^{-2}X(z)
 \\
@@ -219,16 +223,17 @@ is
 U(z) = \frac{1}{1-z^{-1}}, \quad \abs{z} > 1
 \end{equation}
 \solution
-\begin{equation}
-\delta(n) \system{Z} 1
-\end{equation}
+\begin{align}
+{\mathcal{Z}}\{\delta(n)\} &= \sum_{n=-\infty}^{\infty}\delta(n)z^{-n}\\
+&= \delta(0)z^{-0}\\
+&= 1
+\end{align}
 and from \eqref{eq:unit_step},
 \begin{align}
 U(z) &= \sum _{n= 0}^{\infty}z^{-n}
 \\
 &=\frac{1}{1-z^{-1}}, \quad \abs{z} > 1
 \end{align}
-using the formula for the sum of an infinite geometric progression.
 %
 \item Show that 
 \begin{equation}
@@ -306,7 +311,7 @@ H(z) &= \frac{1}{1 + \frac{1}{2}z^{-1}} + \frac{ z^{-2}}{1 + \frac{1}{2}z^{-1}}
 using \eqref{eq:anun} and \eqref{eq:z_trans_shift}.
 \item Sketch $h(n)$. Is it bounded? Convergent? 
 \\
-\solution The following code plots $h\brak{n}$ 
+\solution The following code plots $h\brak{n}$: 
 \begin{lstlisting}
 https://github.com/Avyaaz13/Audio-Filtering/blob/main/Audio%20Filtering/codes/4.2_h.py
 \end{lstlisting}
@@ -316,25 +321,24 @@ https://github.com/Avyaaz13/Audio-Filtering/blob/main/Audio%20Filtering/codes/4.
 \caption{$h(n)$ \text{ vs } $n$}
 \label{fig:hn}
 \end{figure}
+From graph, we can say that $h(n)$ is bounded.
 
+To check for convergence we can use the ratio test:
+\begin{align}
+    \lim_{n \to \infty}\abs{\frac{h(n + 1)}{h(n)}} &= \abs{\frac{\brak{-\frac{1}{2}}^{n+1} + \brak{-\frac{1}{2}}^{n-1}}{\brak{-\frac{1}{2}}^{n} + \brak{-\frac{1}{2}}^{n-2}}}\\
+    &= \frac{1}{2} < 1 \label{eq:5.5}
+\end{align}
+Hence, $h(n)$ is convergent.
 \item The system with $h(n)$ is defined to be stable if
 \begin{equation}
 \sum_{n=-\infty}^{\infty}h(n) < \infty \label{eq:stb_condn}
 \end{equation}
 Is the system defined by \eqref{q:2.2} stable for the impulse response in \eqref{eq:impulse_resp}?\\
-\solution For stable system \eqref{eq:stb_condn} should converge.\\
-By using ratio test for convergence:
-\begin{align}
-    \lim_{n \to \infty}\left|\frac{h(n + 1)}{h(n)}\right|&<1 \\
-\end{align}
-For large $n$ 
-\begin{align}
-    u\brak{n}=u\brak{n-2}=1
-\end{align}
-\begin{align}
-  \lim_{n \to \infty}  \brak{\frac{h(n + 1)}{h(n)}} = \frac{1}{2} <1
-\end{align}
-Hence it is stable.
+\solution Sum of infinite terms of a convergent series is finite. From \eqref{eq:5.5}, we proved that $h(n)$ was convergent therefore
+\begin{equation}
+\sum_{n=-\infty}^{\infty}h(n) < \infty
+\end{equation}
+Hence, the system with the impulse response $h(n)$ is a stable system.
 \item 
 Compute and sketch $h(n)$ using 
 \begin{equation}
@@ -386,12 +390,15 @@ https://github.com/Avyaaz13/Audio-Filtering/blob/main/Audio%20Filtering/codes/4.
 
 \item Show that
 \begin{equation}
-y(n) =  \sum_{k=-\infty}^{\infty}x(n-k)h(k)
+y(n) =  \sum_{k=-\infty}^{\infty}x(n-k)h(k)\label{conv}
 \end{equation}
 \solution
-In \eqref{eq:convolve}, we substitute $k = n - k$ to get
+From, \eqref{eq:convolve_}
 \begin{align}
-y\brak{n} &= \sum_{k=-\infty}^{\infty}x\brak{k}h\brak{n - k} \\
+y\brak{n} = \sum_{k=-\infty}^{\infty}x\brak{k}h\brak{n - k} 
+\end{align}
+Substitute $k \to n-k$:
+\begin{align}
 		  &= \sum_{n - k=-\infty}^{\infty}x\brak{n - k}h\brak{k} \\
 		  &= \sum_{k=-\infty}^{\infty}x\brak{n - k}h\brak{k}
 \end{align}
@@ -467,9 +474,10 @@ where $\omega=e^{-\frac{j2\pi}{N}}$ . Now any DFT equation can be written as
 \end{align}
 Thus we can rewrite  \eqref{eq:fp} as:
 \begin{align}
-	\mtx{Y} = \mtx{X}\cdot\mtx{H} = \brak{\mtx{W}\mtx{x}}\cdot\brak{\mtx{W}\mtx{h}}
+\mtx{Y} = \mtx{X}\odot\mtx{H} = \brak{\mtx{W}\mtx{x}}\odot\brak{\mtx{W}\mtx{h}}
 \end{align}
 \end{enumerate}
+where $\odot$ represents the Hadamard product which multiplies corresponding elements of matrices of same size.
 The below code computes $y\brak{n}$ by DFT Matrix and then plots it.
 \begin{lstlisting}
 https://github.com/Avyaaz13/Audio-Filtering/blob/main/Audio%20Filtering/codes/5.5_matrix.py
@@ -480,7 +488,7 @@ https://github.com/Avyaaz13/Audio-Filtering/blob/main/Audio%20Filtering/codes/5.
 \caption{$y(n)$ from DFT Matrix}
 \label{fig:yn_DFT_matrix}
 \end{figure}
-\section{\underline{\textbf{EXERCISES}}}
+\section{\textbf{EXERCISES}}
 \noindent Answer the following questions by looking at the python code in Problem \ref{py:audio_filter}.
 \begin{enumerate}[label=\thesection.\arabic*]
 \item
@@ -497,7 +505,7 @@ in Problem \ref{py:audio_filter} is executed through the following difference eq
 where the input signal is $x(n)$ and the output signal is $y(n)$ with initial values all 0. Replace
 \textbf{signal. filtfilt} with your own routine and verify.\\
 
-\solution The below code gives the output of an Audio Filter without using the built in function signal.filtfilt.
+\solution Below code plots the input signal:
 
 \begin{lstlisting}
 https://github.com/Avyaaz13/Audio-Filtering/blob/main/Audio%20Filtering/codes/6.1_filtfilt.py
@@ -508,7 +516,7 @@ https://github.com/Avyaaz13/Audio-Filtering/blob/main/Audio%20Filtering/codes/6.
 \caption{$x(n)$ vs $n$}
 \label{fig:x(n) vs n}
 \end{figure}
-
+The below code gives the output of an Audio Filter without using the built in function signal.filtfilt.
 \begin{figure}[!ht]
 \centering
 \includegraphics[width=1.2\columnwidth]{figs/Figure_1.png}
@@ -516,8 +524,7 @@ https://github.com/Avyaaz13/Audio-Filtering/blob/main/Audio%20Filtering/codes/6.
 \label{fig:6.1}
 \end{figure}
 
-\solution The below code gives the output of an Audio Filter without using the built in function signal.lfilter.
-
+The below code gives the output of an Audio Filter without using the built in function signal.lfilter.
 \begin{lstlisting}
 https://github.com/Avyaaz13/Audio-Filtering/blob/main/Audio%20Filtering/codes/lfilt.py
 \end{lstlisting}
@@ -655,16 +662,33 @@ https://github.com/Avyaaz13/Audio-Filtering/blob/main/Audio%20Filtering/codes/6.
 
 \item Compute $y(n)$ using DFT and FFT.
 
-Below code plots \figref{fig:dft__fft} $y(n)$ using DFT:
+Below code plots \figref{fig:dft__fft} $y(n)$ using DFT and FFT:
 \begin{lstlisting}
 https://github.com/Avyaaz13/Audio-Filtering/blob/main/Audio%20Filtering/codes/6.4_yndft.py
 \end{lstlisting}
-
+\newpage
 \begin{figure}[!ht]
 \centering
 \includegraphics[width=\columnwidth]{figs/6.2_dft.png}
 \caption{$y(n)$ obtained from DFT \& FFT }
 \label{fig:dft__fft}
+\end{figure}
+
+\item Frequency Response of Butterworth Filter in Analog Domain:
+
+To convert to analog domain, we can use the Bilinear Transform where we substitute:
+\begin{align}
+    z=\frac{1+\frac{sT}{2}}{{1-\frac{sT}{2}}}
+\end{align}
+Below is the code to plot Frequency Response in Analog Domain:
+\begin{lstlisting}
+https://github.com/Avyaaz13/Audio-Filtering/blob/main/Audio%20Filtering/codes/6_bt.py
+\end{lstlisting}
+\begin{figure}[!h]
+    \centering
+    \includegraphics[width = \columnwidth]{figs/bt.png}
+    \caption{Plot of Frequency Response in Analog Domain}
+    \label{fig:bt}
 \end{figure}
 \item What is the sampling frequency of the input signal?\\
 \solution The Sampling Frequency is $44.1$KHz

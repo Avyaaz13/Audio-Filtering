@@ -170,7 +170,7 @@ where,
 c_N(x) =
     \begin{cases}
    \cosh(N \cosh^{-1}x) & x > 1 \nonumber \\
-   \cos(N \cos^{-1}x) & 0 \leq x \leq 1 
+   \cos(N \cos^{-1}x) & |x| \leq 1 
     \end{cases}
 \end{align} $N$ $\in$ $Z$ which is the order of the filter, and $\epsilon$ are design paramters.  Since $\Omega_{Lp} = 1$, (\ref{lpfirst}) may be rewritten as
 \begin{equation}
@@ -218,7 +218,7 @@ The poles of the frequency response in (\ref{lpfirst}) are general obtained as
 $r_1\cos\phi_k + jr_2\sin \phi_k$, where
 \begin{eqnarray}
 \label{lppoles}
-\phi_k = \frac{\pi}{2} + \frac{(2k+1)\pi}{2N}, k = 0, 1, \dots, N-1 \nonumber \\
+\phi_k = \frac{\pi}{2} + \frac{(2k+1)\pi}{2N}, k = 0, 1, \dots, 2N-1 \nonumber \\
 r_1 = \frac{\beta^2 - 1}{2\beta}, r_2 = \frac{\beta^2 + 1}{2\beta}, \beta = \left[ \frac{\sqrt{1 + \epsilon^2} + 1}{\epsilon}\right]^{\frac{1}{N}}
 \end{eqnarray}
 Thus, for N even, the low-pass stable Chebyschev filter, with a gain $G$ has the form

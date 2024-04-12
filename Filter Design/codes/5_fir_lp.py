@@ -56,6 +56,8 @@ plt.grid()
 plt.savefig('fig5.png')
 plt.show()
 
+coefficients = Hlp[:len(Hlp) // 2 + 1]  # Consider only the positive frequencies
+print("Coefficients of Hlp(omega):", coefficients)
 # fir_coeff = hbp
 
 # save fir_coeff.dat fir_coeff -ascii

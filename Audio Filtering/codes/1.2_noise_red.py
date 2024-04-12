@@ -19,5 +19,5 @@ b, a = signal.butter(order, Wn, 'low')
 # Filter the input signal with a Butterworth filter
 output_signal = signal.filtfilt(b, a, input_signal, method="gust")
 
-sf.write('ReducedNoise_s181.wav', output_signal, fs)
+#sf.write('ReducedNoise_s181.wav', output_signal, fs)
 
