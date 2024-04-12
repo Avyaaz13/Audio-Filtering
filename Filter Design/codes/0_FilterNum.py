@@ -5,7 +5,7 @@ def c_N(x, N):
 delta = 0.15
 delta1 = delta
 delta2 = delta
-Fs = 48000  
+Fs = 48 
 
 # Sampling frequency in Hz
 for i in range(11013, 11014):
