@@ -1,6 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
-
+from scipy.fft import fft, ifft
 N = 14
 n = np.arange(N)
 fn=(-1/2)**n
@@ -10,7 +10,7 @@ hn2=np.pad(fn, (2,0), 'constant', constant_values=(0))
 h = hn1+hn2 
 
 xtemp=np.array([1.0,2.0,3.0,4.0,2.0,1.0])
-x=np.pad(xtemp, (0,8), 'constant', constant_values=(0))
+x=np.pad(xtemp, (0,10), 'constant', constant_values=(0))
 
 X = np.zeros(N) + 1j*np.zeros(N)
 for k in range(0,N):
@@ -32,7 +32,8 @@ for k in range(0,N):
 
 y = np.real(y)/N
 
-plt.stem(range(0,N),y, linefmt='b-', markerfmt='ro', basefmt='k')
+
+plt.stem(range(0,N),y, linefmt='co-', markerfmt='ro', basefmt='k')
 plt.xlabel('$n$')
 plt.ylabel('$y(n)$')
 plt.grid()

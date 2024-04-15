@@ -3,4 +3,4 @@
 \contentsline {section}{\numberline {3}Z-Transform}{2}{section.3}%
 \contentsline {section}{\numberline {4}Impulse Response}{4}{section.4}%
 \contentsline {section}{\numberline {5}DFT and FFT}{5}{section.5}%
-\contentsline {section}{\numberline {6}\textbf {EXERCISES}}{6}{section.6}%
+\contentsline {section}{\numberline {6}\textbf {EXERCISES}}{7}{section.6}%

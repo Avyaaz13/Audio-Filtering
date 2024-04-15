@@ -168,7 +168,7 @@ and find
 \solution From \eqref{eq:z_trans},
 \begin{align}
 {\mathcal {Z}}\{x(n-1)\} &=\sum _{n=-\infty }^{\infty }x(n-1)z^{-n}\\
-n &\longrightarrow n+1\\ \nonumber
+\text{Substitute }n &\rightarrow n+1:\\ \nonumber
 &=\sum _{n=-\infty }^{\infty }x(n)z^{-n-1} \\
 &= z^{-1}\sum _{n=-\infty }^{\infty }x(n)z^{-n}\\
 &= z^{-1}X(z)
@@ -177,7 +177,7 @@ resulting in \eqref{eq:shift1}. Similarly, it can be shown that
 %
 \begin{align}
 {\mathcal {Z}}\{x(n-k)\} &=\sum _{n=-\infty }^{\infty }x(n-k)z^{-n}\\
-n &\longrightarrow n+k \nonumber\\
+\text{Substitute: }n &\rightarrow n+k \nonumber\\
 &=\sum _{n=-\infty }^{\infty }x(n)z^{-n-k} \\
 &= z^{-k}\sum _{n=-\infty }^{\infty }x(n)z^{-n}\\
 &= z^{-k}X(z) \label{eq:z_trans_shift}
@@ -193,7 +193,7 @@ from  \eqref{q:2.2} assuming that the $Z$-transform is a linear operation.
 \begin{align}
 Y(z) + \frac{1}{2}z^{-1}Y(z) &= X(z)+z^{-2}X(z)
 \\
-\implies \frac{Y(z)}{X(z)} &= \frac{1 + z^{-2}}{1 + \frac{1}{2}z^{-1}}
+\implies \frac{Y(z)}{X(z)} &= \frac{1 + z^{-2}}{1 + \frac{1}{2}z^{-1}}; \quad \frac{1}{2} \leq \abs{z}
 \label{eq:freq_resp}
 \end{align}
 %
@@ -260,35 +260,73 @@ https://github.com/Avyaaz13/Audio-Filtering/blob/main/Audio%20Filtering/codes/3.
 \end{lstlisting}
 
 
-The DTFT of a sequence \( x(n) \) is given by:
-\[ H(e^{j\omega}) = \sum_{n=-\infty}^{\infty} x(n) e^{-j\omega n} \]
+% The DTFT of a sequence \( h(n) \) is given by:
+% \[ H(e^{j\omega}) = \sum_{n=-\infty}^{\infty} x(n) e^{-j\omega n} \]
 
-Now, consider \( H(e^{j(\omega + 2\pi)}) \):
-\[ H(e^{j(\omega + 2\pi)}) = \sum_{n=-\infty}^{\infty} x(n) e^{-j(\omega + 2\pi) n} \]
+% Now, consider \( H(e^{j(\omega + 2\pi)}) \):
+% \[ H(e^{j(\omega + 2\pi)}) = \sum_{n=-\infty}^{\infty} h(n) e^{-j(\omega + 2\pi) n} \]
 
-Using Euler's formula,
-\begin{align}
-e^{-j(\omega + 2\pi) n} &= e^{-j\omega n} e^{-j2\pi n} = e^{-j\omega n} \\
-\because  e^{-j2\pi n} &= 1\quad  \forall{n}
-\end{align}
-\begin{align}
-  H(e^{j(\omega + 2\pi)}) = H(e^{j\omega}) 
-\end{align}
+% Using Euler's formula,
+% \begin{align}
+% e^{-j(\omega + 2\pi) n} &= e^{-j\omega n} e^{-j2\pi n} = e^{-j\omega n} \\
+% \because  e^{-j2\pi n} &= 1\quad  \forall{n}
+% \end{align}
+% \begin{align}
+%   H(e^{j(\omega + 2\pi)}) = H(e^{j\omega}) 
+% \end{align}
 
-Therefore, the fundamental period is $2\pi$ , which implies that DTFT of a signal is always periodic.
+% Therefore, the fundamental period is $2\pi$ , which implies that DTFT of a signal is always periodic.
 
 Substituting $z = e^{j \omega}$ in \eqref{eq:freq_resp}, we get
 \begin{align}
-	\left|H\brak{e^{j\omega}}\right| &= \left|\frac{1 + e^{-2j\omega}}{1 + \frac{1}{2}e^{-j\omega}}\right| \\
-	 &= \sqrt{\frac{\brak{1 + \cos{2\omega}}^2 + \brak{\sin{2\omega}}^2}{\brak{1 + \frac{1}{2}\cos{\omega}}^2 + \brak{\frac{1}{2}\sin{\omega}}^2}}\\
-	 &= \frac{4|\cos{\omega}|}{\sqrt{5 + 4\cos{\omega}}}
+	H\brak{e^{\j \omega}} &=\frac{1 + \brak{e^{-2\j \omega}}}{1 + \frac{1}{2}\brak{e^{-1\j \omega}}}\\
+	&=\frac{2\cos\brak{\omega}}{\brak{e^{\j \omega}} + \frac{1}{2}}\\
+	\implies \abs{H\brak{e^{\j \omega}}} &= \frac{2\cos\brak{\omega}}{\sqrt{\brak{\cos\brak{\omega}+\frac{1}{2}}^{2}+\brak{\sin^2\brak{\omega}}}}\\
+% \end{align}
+% \begin{align}
+&=\frac{2\cos\brak{\omega}}{\sqrt{\cos^2\brak{\omega}+\sin^2\brak{\omega}+\cos\brak{\omega}+\frac{1}{4}}}\\
+	&=\frac{2\cos\brak{\omega}}{\sqrt{\frac{5}{4}+\cos\brak{\omega}}}\\
 \end{align}
+For a periodic function of period $T$,
+\begin{align}
+	f\brak{x} = f\brak{x+T}, T \neq 0	 
+\end{align}
+Both the numerator and denominator have a period of $2\pi$ since $\cos\brak{\omega}$ has a period of $2\pi$. Which means that $H(e^{\j (\omega)})$ has a period of $2\pi$
+
+$\therefore$ Period is $2\pi$.\\
 \begin{figure}[!ht]
 \centering
 \includegraphics[width=\columnwidth]{figs/H(z).png}
 \caption{$\abs{H\brak{e^{j\omega}}} \text{ vs } \omega$}
 \label{fig:H(z)_3.5}
 \end{figure}
+\item Express $h(n)$ in terms of $H(e^{\j\omega})$.
+
+\solution We have,
+\begin{align}
+	H(e^{\j\omega}) &= \sum_{k = -\infty}^{\infty}h(k)e^{-\j\omega k}
+\end{align}
+However,
+\begin{align}
+	\int_{-\pi}^{\pi}e^{\j\omega(n - k)}d\omega =
+	\begin{cases}
+		2\pi & n = k \\
+		0 & \textrm{otherwise}
+	\end{cases}
+\end{align}
+and so,
+\begin{align}
+	&\frac{1}{2\pi}\int_{-\pi}^{\pi}H(e^{\j\omega})e^{j\omega n}d\omega \\
+	&= \frac{1}{2\pi}\sum_{k = -\infty}^{\infty}\int_{-\pi}^{\pi}h(k)e^{\j\omega(n - k)}d\omega \\
+	&= \frac{1}{2\pi}2\pi h(n) = h(n)
+\end{align}
+
+which is known as the Inverse Discrete Fourier Transform. Thus,
+\begin{align}
+	h(n) &= \frac{1}{2\pi}\int_{-\pi}^{\pi}H(e^{\j\omega})e^{\j\omega n}d\omega \\
+		 &= \frac{1}{2\pi}\int_{-\pi}^{\pi}\frac{1 + e^{-2\j\omega}}{1 + \frac{1}{2}e^{-\j\omega}}e^{\j\omega n}d\omega
+	\label{eq:idtft}
+\end{align}
 \end{enumerate}
 
 \section{Impulse Response}
@@ -306,7 +344,7 @@ system defined by \eqref{q:2.2}.
 \begin{align}
 H(z) &= \frac{1}{1 + \frac{1}{2}z^{-1}} + \frac{ z^{-2}}{1 + \frac{1}{2}z^{-1}}
 \\
-\implies h(n) &= \brak{-\frac{1}{2}}^{n}u(n) + \brak{-\frac{1}{2}}^{n-2}u(n-2)
+\implies h(n) &= \brak{-\frac{1}{2}}^{n}u(n) + \brak{-\frac{1}{2}}^{n-2}u(n-2)\label{hneqn}
 \end{align}
 using \eqref{eq:anun} and \eqref{eq:z_trans_shift}.
 \item Sketch $h(n)$. Is it bounded? Convergent? 
@@ -334,11 +372,18 @@ Hence, $h(n)$ is convergent.
 \sum_{n=-\infty}^{\infty}h(n) < \infty \label{eq:stb_condn}
 \end{equation}
 Is the system defined by \eqref{q:2.2} stable for the impulse response in \eqref{eq:impulse_resp}?\\
-\solution Sum of infinite terms of a convergent series is finite. From \eqref{eq:5.5}, we proved that $h(n)$ was convergent therefore
-\begin{equation}
-\sum_{n=-\infty}^{\infty}h(n) < \infty
-\end{equation}
-Hence, the system with the impulse response $h(n)$ is a stable system.
+% \solution Sum of infinite terms of a convergent series is finite. From \eqref{eq:5.5}, we proved that $h(n)$ was convergent therefore
+% \begin{equation}
+% \sum_{n=-\infty}^{\infty}h(n) < \infty
+% \end{equation}
+% Hence, the system with the impulse response $h(n)$ is a stable system.
+\solution Note that
+\begin{align}
+	\sum_{n = -\infty}^{\infty}h\brak{n} &= \sum_{n = -\infty}^{\infty}
+	\brak{-\frac{1}{2}}^nu\brak{n} + \brak{-\frac{1}{2}}^{n - 2}u\brak{n - 2} \\
+										 &= 2\brak{\frac{1}{1 + \frac{1}{2}}} = \frac{4}{3} < \infty
+\end{align}
+Thus, the given system is stable.
 \item 
 Compute and sketch $h(n)$ using 
 \begin{equation}
@@ -363,7 +408,7 @@ https://github.com/Avyaaz13/Audio-Filtering/blob/main/Audio%20Filtering/codes/4.
 \caption{$h(n)$ vs $n$ using definition}
 \label{fig:hndef}
 \end{figure}
-
+\newpage
 \item Compute 
 \begin{equation}
 \label{eq:convolve_}
@@ -423,7 +468,44 @@ y\brak{n}={\frac {1}{N}}\sum _{k=0}^{N-1}Y\brak{k}\cdot e^{\j 2\pi kn/N},\quad n
 \label{eq:I-FT}
 \end{equation}
 
-\solution The above three questions are solved using the code below.
+\solution 
+
+We know that ,\\
+\begin{equation}
+	x(n) = \cbrak{\underset{\uparrow}{1},2,3,4,2,1}
+\end{equation}
+Here, let, $\omega=e^{-j2\pi k}$. Then,
+\begin{align}
+	X(k)=1+2\omega^{\frac{1}{5}}+3\omega^{\frac{2}{5}}+4\omega^{\frac{3}{5}}+2\omega^{\frac{4}{5}}+\omega
+	\label{eq:Xkdef}
+\end{align}
+Similarly, we know from \eqref{hneqn},
+\begin{align}
+	h\brak{n} &= \begin{cases}
+					 0 &, n < 0\\
+					 \brak{\frac{-1}{2}}^n &, 0\leq n<2\\
+					 5\brak{\frac{-1}{2}}^n &, n \geq 2
+				  \end{cases}
+\end{align}
+% Now,again let, $\omega=e^{-j2\pi k}$. Then,
+\begin{align}
+	H(k)=1+\frac{-1}{2}\omega^{\frac{1}{5}}+\frac{5}{4}\omega^{\frac{2}{5}}+\frac{-5}{8}\omega^{\frac{3}{5}}+\frac{5}{16}\omega^{\frac{4}{5}}+\frac{-5}{32}\omega
+	\label{eq:Hkdef}
+\end{align}
+Now, from \eqref{eq:Xkdef} and \eqref{eq:Hkdef}, we know $X(k)$ and $H(k)$. Now, given that,
+\begin{equation}
+	\label{eq:fp}
+	Y\brak{k}=X\brak{k}*H\brak{k}
+\end{equation}
+%\polyadd\PolynomX{1+2\omega^{\frac{1}{5}}+3\omega^{\frac{2}{5}}+4\omega^{\frac{3}{5}}+2\omega^{\frac{4}{5}}+\omega}{0}
+\begin{multline}
+	Y\brak{k}= (1+2\omega^{\frac{1}{5}}+3\omega^{\frac{2}{5}}+4\omega^{\frac{3}{5}}+2\omega^{\frac{4}{5}}+\omega)* \\(1+\frac{-1}{2}\omega^{\frac{1}{5}}+\frac{5}{4}\omega^{\frac{2}{5}}+\frac{-5}{8}\omega^{\frac{3}{5}}+\frac{5}{16}\omega^{\frac{4}{5}}+\frac{-5}{32}\omega)
+\end{multline}
+\begin{multline}
+	Y\brak{k}= 1+\frac{3}{2}\omega^{\frac{1}{5}}+\frac{13}{4}\omega^{\frac{2}{5}}+\frac{35}{8}\omega^{\frac{3}{5}}+\frac{45}{16}\omega^{\frac{4}{5}}\\\frac{115}{32}\omega^{\frac{5}{5}}+\frac{1}{8}\omega^{\frac{6}{5}}+\frac{25}{32}\omega^{\frac{7}{5}}-\frac{5}{8}\omega^{\frac{8}{5}}\\-\frac{5}{32}\omega^{5} 
+\end{multline}
+where, $\omega=e^{-j2k\pi}$
+The above three questions are solved using the code below:
 \begin{lstlisting}
 https://github.com/Avyaaz13/Audio-Filtering/blob/main/Audio%20Filtering/codes/5.1_2_3.py
 \end{lstlisting}
@@ -437,57 +519,160 @@ https://github.com/Avyaaz13/Audio-Filtering/blob/main/Audio%20Filtering/codes/5.
 \begin{lstlisting}
 https://github.com/Avyaaz13/Audio-Filtering/blob/main/Audio%20Filtering/codes/5.4_FFT.py 
 \end{lstlisting}
+The values of $y(n)$ using all the three methods have been plotted on one stem plot for convenience.
+\newpage
 \begin{figure}[!ht]
 \centering
-\includegraphics[width=\columnwidth]{figs/yn_FFT.png}
+\includegraphics[width=\columnwidth]{figs/5.4.png}
 \caption{$y(n)$ obtained using IFFT}
-\label{fig:yn_verf_5.4}
+\label{fig:5.4}
 \end{figure}
 
 \item Wherever possible, express all the above equations as matrix equations.\\
-\solution The DFT matrix is defined as : 
+\solution 
+	
+	The convolution can be written using a Toeplitz matrix:
 \begin{align}
-	\mtx{W} = 
-	\begin{pmatrix}
-		\omega^0 & \omega^0 & \ldots & \omega^0 \\
-		\omega^0 & \omega^1 & \ldots & \omega^{N - 1} \\
-		\vdots & \vdots & \ddots & \vdots \\
-		\omega^0 & \omega^{N - 1} & \ldots & \omega^{(N -1)(N - 1)}
-	\end{pmatrix}
-\end{align}
-where $\omega=e^{-\frac{j2\pi}{N}}$ . Now any DFT equation can be written as
+		\vec{x} &= \myvec{x_0 & x_1	 & \cdots & x_{N-1}}^\top \\
+		\vec{h} &= \myvec{h_0 & h_1	 & \cdots & h_{N-1}}^\top \\
+		\vec{y} &= \vec{x} \circledast \vec{h} \\
+		\myvec{y_1 \\ y_2 \\ \vdots \\ y_{2N - 1}} &= \myvec{
+			h_0 & 0 & 0 & \cdots & 0 \\
+			h_1 & h_0 & 0 & \cdots & 0 \\
+			h_2 & h_1 & h_0 & \cdots & 0 \\
+			\vdots & \vdots & \vdots & \ddots & \vdots \\
+			h_{N-1} & h_{N-2} & h_{N-3} & \cdots & h_0 \\
+			0 & h_{N-1} & h_{N-2} & \cdots & h_1 \\
+			0 & 0 & h_{N-1} & \cdots & h_2 \\
+			\vdots & \vdots & \vdots & \ddots & \vdots \\
+			0 & 0 & 0 & \cdots & h_{N-1}
+		}		
+		\myvec{x_0\\x_1\\ \vdots \\x_{N-1}}
+	\end{align}
+
+	
+The DFT matrix is defined as : 
+	\begin{align}
+		\vec{W} = \myvec{
+			1 & 1 & 1 & 1 & \cdots & 1 \\
+			1 & \omega & \omega^2 & \omega^3 & \cdots & \omega^{N-1} \\
+			1 & \omega^2 & \omega^4 & \omega^6 & \cdots & \omega^{2(N-1)} \\
+			1 & \omega^3 & \omega^6 & \omega^9 & \cdots & \omega^{3(N-1)} \\
+			\vdots & \vdots & \vdots & \vdots & \ddots & \vdots \\ 
+			1 & \omega^{N-1} & \omega^{2(N-1)} & \omega^{3(N-1)} & \cdots & \omega^{(N-1)(N-1)}
+		}
+	\end{align}
+where $\omega=e^{-\frac{j2\pi}{N}}$ . i.e. $W_{jk} = \omega^{jk}$, $0 \leq j, k < N$. Hence, we can write any DFT equation as
 \begin{align}
-    \mtx{X} = \mtx{W}\mtx{x}
+	\mtx{X} = \mtx{W}\mtx{x} = \mtx{x}\mtx{W}
 \end{align}
-\noindent where
-\begin{align}
-	\mtx{x} = 
-	\begin{pmatrix}
-		x(0) \\ x(1) \\ \vdots \\ x(n - 1)
-	\end{pmatrix}
-\end{align}
-\begin{align}
-	\mtx{X} = 
-	\begin{pmatrix}
-		X(0) \\ X(1) \\ \vdots \\ X(n - 1)
-	\end{pmatrix}
-\end{align}
-Thus we can rewrite  \eqref{eq:fp} as:
-\begin{align}
-\mtx{Y} = \mtx{X}\odot\mtx{H} = \brak{\mtx{W}\mtx{x}}\odot\brak{\mtx{W}\mtx{h}}
-\end{align}
-\end{enumerate}
-where $\odot$ represents the Hadamard product which multiplies corresponding elements of matrices of same size.
-The below code computes $y\brak{n}$ by DFT Matrix and then plots it.
+
+	Then the discrete Fourier transforms of $\vec{x}$ and $\vec{h}$ are given by
+	\begin{align}
+		\vec{X} &= \vec{W} \vec{x} \\
+		\vec{H} &= \vec{W} \vec{h}
+	\end{align}
+	
+	$\vec{Y}$ is then given by
+	\begin{equation}
+		\vec{Y} = \vec{X} \odot \vec{H}
+	\end{equation}
+	where $\odot$ denotes the Hadamard product (element-wise multiplication)
+	
+	But $\vec{Y}$ is the discrete Fourier transform of the filter output $\vec{y}$
+	\begin{equation}
+		\vec{Y} = \vec{W} \vec{y}
+	\end{equation}
+	
+	Thus,
+	\begin{align}
+		\vec{W} \vec{y} &= \vec{X} \odot \vec{H} \\
+		\implies \vec{y} &= \vec{W}^{-1} \brak{\vec{X} \odot \vec{H}} \\
+		&= \vec{W}^{-1} \brak{\vec{W} \vec{x} \odot \vec{W} \vec{h}}
+	\end{align}
+	This is the inverse discrete Fourier transform of $\vec{Y}$
+	
+
+
+
+% \noindent where
+% \begin{align}
+% 	\mtx{x} = 
+% 	\begin{pmatrix}
+% 		x(0) \\ x(1) \\ \vdots \\ x(n - 1)
+% 	\end{pmatrix}
+% \end{align}
+% \begin{align}
+% 	\mtx{X} = 
+% 	\begin{pmatrix}
+% 		X(0) \\ X(1) \\ \vdots \\ X(n - 1)
+% 	\end{pmatrix}
+% \end{align}
+% Thus we can rewrite  \eqref{eq:fp} as:
+% \begin{align}
+% \mtx{Y} = \mtx{X}\odot\mtx{H} = \brak{\mtx{W}\mtx{x}}\odot\brak{\mtx{W}\mtx{h}}
+% \end{align}
+% % \end{enumerate}
+% where $\odot$ represents the Hadamard product which multiplies corresponding elements of matrices of same size.
+% The below code computes $y\brak{n}$ by DFT Matrix and then plots it.
 \begin{lstlisting}
 https://github.com/Avyaaz13/Audio-Filtering/blob/main/Audio%20Filtering/codes/5.5_matrix.py
 \end{lstlisting}
-\begin{figure}[!ht]
+
+\begin{figure}[H]
 \centering
 \includegraphics[width=\columnwidth]{figs/matrix.png}
 \caption{$y(n)$ from DFT Matrix}
 \label{fig:yn_DFT_matrix}
 \end{figure}
+
+\item Implement your own FFT and IFFT routines and verify your routine by plotting $y(n)$.
+
+\solution Below code implements the FFT and IFFT routines without using inbuilt functions:
+\begin{lstlisting}
+https://github.com/Avyaaz13/Audio-Filtering/blob/main/Audio%20Filtering/codes/fftown.py
+\end{lstlisting}
+
+The plot is shown in \figref{fig:yn-own}
+
+\begin{figure}[!ht]
+	\includegraphics[width=\columnwidth]{figs/fft_own.png}
+	\caption{$y(n)$ using own implementation of FFT and IFFT}
+	\label{fig:yn-own}
+\end{figure}
+
+
+
+% \item Find the time complexities of computing $y(n)$ using FFT/IFFT and convolution.
+
+% \solution The C code for finding the running times of these three algorithms can be downloaded from
+% \begin{lstlisting}
+% https://github.com/Avyaaz13/Audio-Filtering/blob/main/Audio%20Filtering/codes/timeconv.c
+% \end{lstlisting}
+% This code generates three text files that are used to plot the runtimes of the algorithms in the following Python codes
+% \begin{lstlisting}
+% https://github.com/Avyaaz13/Audio-Filtering/blob/main/Audio%20Filtering/codes/time1.py
+% https://github.com/Avyaaz13/Audio-Filtering/blob/main/Audio%20Filtering/codes/time2.py
+% \end{lstlisting}
+% % Figs. \eqref{fig:nlgn} and \eqref{fig:nsq} are generated by executing the codes.
+% % \begin{lstlisting}
+% % $ python3 6_7_1.py 
+% % $ python3 6_7_2.py 
+% % \end{lstlisting}
+
+% \begin{figure}[!htb]
+% 	\includegraphics[width=\columnwidth]{figs/FFT_conv.png}
+% 	\caption{The worst-case complexity of FFT/IFFT is $O(n\log{n})$}
+% 	\label{fig:nlgn}
+% \end{figure}
+
+% \begin{figure}[!htb]
+% 	\includegraphics[width=\columnwidth]{figs/Conv_Time.png}
+% 	\caption{The worst case complexity of convolution is $O(n^2)$}
+% 	\label{fig:nsq}
+% \end{figure}
+\end{enumerate}
+
 \section{\textbf{EXERCISES}}
 \noindent Answer the following questions by looking at the python code in Problem \ref{py:audio_filter}.
 \begin{enumerate}[label=\thesection.\arabic*]
@@ -505,7 +690,7 @@ in Problem \ref{py:audio_filter} is executed through the following difference eq
 where the input signal is $x(n)$ and the output signal is $y(n)$ with initial values all 0. Replace
 \textbf{signal. filtfilt} with your own routine and verify.\\
 
-\solution Below code plots the input signal:
+\solution Below code plots the input signal and the output of an Audio Filter without using the built in function signal.filtfilt.
 
 \begin{lstlisting}
 https://github.com/Avyaaz13/Audio-Filtering/blob/main/Audio%20Filtering/codes/6.1_filtfilt.py
@@ -516,7 +701,7 @@ https://github.com/Avyaaz13/Audio-Filtering/blob/main/Audio%20Filtering/codes/6.
 \caption{$x(n)$ vs $n$}
 \label{fig:x(n) vs n}
 \end{figure}
-The below code gives the output of an Audio Filter without using the built in function signal.filtfilt.
+
 \begin{figure}[!ht]
 \centering
 \includegraphics[width=1.2\columnwidth]{figs/Figure_1.png}

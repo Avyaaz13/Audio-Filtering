@@ -2,6 +2,27 @@ import numpy as np
 from scipy.fft import fft, ifft
 import matplotlib.pyplot as plt
 
+def myfft(n, x):
+    if (n == 1): return x
+    g = myfft(n/2, x[0::2])
+    g1 = np.copy(g)
+    h = myfft(n/2, x[1::2])
+    h1 = np.copy(h)
+    g = np.concatenate((g, g1))
+    h = np.concatenate((h, h1))
+    w = np.exp(-1j*2*np.pi*np.arange(n)/n)
+    return g + h*w
+
+def myifft(n, x):
+    if (n == 1): return x
+    g = myifft(n/2, x[0::2])
+    g1 = np.copy(g)
+    h = myifft(n/2, x[1::2])
+    h1 = np.copy(h)
+    g = np.concatenate((g, g1))
+    h = np.concatenate((h, h1))
+    w = np.exp(1j*2*np.pi*np.arange(n)/n)
+    return (g + h*w)/2
 
 N = 14
 n = np.arange(N)
@@ -43,13 +64,20 @@ X_fft = fft(x)
 H_fft = fft(h)
 Y_fft = H_fft*X_fft
 y_ifft = ifft(Y_fft).real
+
+X_own = myfft(16, x)
+H_own = myfft(16, h)
+Y_own = X_own*H_own
+y_own = myifft(16, Y_own)
+
 #plots
 plt.stem(range(0,14),y_ifft[:14],markerfmt='C2o')
+plt.stem(range(0,14),y_own[:14],markerfmt='C3o')
 plt.xlabel('$n$')
 plt.ylabel('$y(n)$')
 plt.grid()
-plt.legend(['From IDFT', 'From difference equation', 'From IFFT'])
+plt.legend(['From IDFT', 'From difference equation', 'From IFFT', 'From own implementation'])
 
-
-plt.savefig('5.4.png')
+plt.savefig('fft_own.png')
+plt.show()
 
