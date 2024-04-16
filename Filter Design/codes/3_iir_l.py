@@ -101,7 +101,7 @@ H_analog_lp = G_lp * np.abs(1 / np.polyval(p, 1j * Omega_L))
 
 # Analog bandpass filter
 num, den, G_bp = lpbp(p, Omega_0, B, Omega_p2)
-
+print(num)
 Omega = np.arange(-0.65, 0.651, 0.01)
 H_analog_bp = G_bp * np.abs(np.polyval(num, 1j * Omega) / np.polyval(den, 1j * Omega))
 
@@ -109,5 +109,5 @@ plt.plot(Omega, H_analog_bp, 'm')
 plt.xlabel('$\\Omega$')
 plt.ylabel('$|H_{a,BP}(j\\Omega)|$')
 plt.grid()
-plt.savefig('fig3.png')
+#plt.savefig('fig3.png')
 plt.show()

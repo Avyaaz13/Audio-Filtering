@@ -10,8 +10,8 @@ for N in range(4, 5):  # N = 4
         ax.plot(Omega, H, color=colors[i], label=f'$\\epsilon = {epsilon:.2f}$')
 
 passband = (Omega >= 0) & (Omega <= 1)
-transitionband = (Omega >= 1) & (Omega <= 2)
-stopband = (Omega >= 2) & (Omega <= 3)
+transitionband = (Omega >= 1) & (Omega <= 1.459)
+stopband = (Omega >= 1.459) & (Omega <= 3)
 ax.fill_between(Omega, 0, 1, where=passband, color='cyan', alpha=0.4, label='Passband')
 ax.fill_between(Omega, 0, 1, where=transitionband, color='yellow', alpha=0.5, label='Transitionband')
 ax.fill_between(Omega, 0, 1, where=stopband, color='#00FF00', alpha=0.8, label='Stopband')
